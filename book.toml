@@ -1,0 +1,10 @@
+[book]
+authors = ["Evalf"]
+language = "en"
+multilingual = false
+src = "src"
+title = "The Nutils Book"
+
+[output.html]
+mathjax-support = true
+git-repository-url = "https://github.com/evalf/nutils-book"
