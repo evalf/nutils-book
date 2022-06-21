@@ -1,0 +1,25 @@
+name: github pages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Install mdbook
+      run: |
+        curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.14/mdbook-v0.4.14-x86_64-unknown-linux-gnu.tar.gz | tar -xz
+    - name: Build book
+      run: |
+        ./mdbook build -d docs
+    - name: Deploy GitHub Pages
+      run: |
+        git add docs
+        git config user.name "Github Pages"
+        git config user.email ""
+        git commit -m "Deploy to gh-pages"
+        git push -f origin main:gh-pages
