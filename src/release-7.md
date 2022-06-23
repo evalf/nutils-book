@@ -134,7 +134,7 @@ class Add_evaluable(evaluable.Array):
 In problems involving multiple fields, where formerly it was required to
 `nutils.function.chain` the bases in order to construct and solve a block
 system, an alternative possibility is now to keep the residuals and targets
-separate and reference the several parts at the solving phase::
+separate and reference the several parts at the solving phase:
 
 ```python
 # old, still valid approach
@@ -176,7 +176,7 @@ To explicitly refer to the history state in `nutils.solver.thetamethod` and its
 derivatives `impliciteuler` and `cranknicolson`, instead of specifiying the
 target through the `target0` parameter, the new argument `historysuffix`
 specifies only the suffix to be added to the main target. Hence, the following
-three invocations are equivalent::
+three invocations are equivalent:
 
 ```python
 # deprecated
@@ -197,7 +197,7 @@ use the `.copy` method.
 ### Deprecated function.elemwise
 
 The function `function.elemwise` has been deprecated. Use `function.Elemwise`
-instead::
+instead:
 
 ```python
 function.elemwise(topo.transforms, values) # deprecated
@@ -208,7 +208,7 @@ function.Elemwise(values, topo.f_index) # new
 
 The `transforms` attribute of bases has been removed due to internal
 restructurings. The `transforms` attribute of the topology on which the
-basis was created can be used as a replacement::
+basis was created can be used as a replacement:
 
 ```python
 reftopo = topo.refined

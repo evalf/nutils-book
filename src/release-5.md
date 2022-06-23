@@ -21,7 +21,7 @@ These are the main additions and changes since [Nutils 4 Eliche](release-4.md).
 The `Matrix.matvec` method has been deprecated in favour of the new
 `__matmul__` (@) operator, which supports multiplication arrays of any
 dimension. The `nutils.matrix.Matrix.solve` method has been extended to support
-multiple right hand sides::
+multiple right hand sides:
 
 ```python
 matrix.matvec(lhs) # deprecated
@@ -41,7 +41,7 @@ method.
 
 The `nutils.solver.thetamethod` class, as well as its special cases
 `impliciteuler` and `cranknicolson`, now have a `timetarget` argument to
-specify that the formulation contains a time variable::
+specify that the formulation contains a time variable:
 
 ```python
 res = topo.integral('...?t... d:x' @ ns, degree=2)
@@ -67,7 +67,7 @@ in Nutils 6.
 A special case `nutils.topology.Topology.locate` method for structured
 topologies checks of the geometry is an affine transformation of the natural
 configuration, in which case the trivial inversion is used instead of expensive
-Newton iterations::
+Newton iterations:
 
 ```python
 topo, geom = mesh.rectilinear([2, 3])
@@ -93,7 +93,7 @@ installation dependency.
 
 The `nutils.parallel` module is largely rewritten. The old methods `pariter`
 and `parmap` are replaced by the `nutils.parallel.fork` context, combined with
-the shared `nutils.parallel.range` iterator::
+the shared `nutils.parallel.range` iterator:
 
 ```python
 indices = parallel.range(10)
