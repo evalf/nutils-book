@@ -20,7 +20,7 @@ bezier = topo.sample('bezier', 2)
 ```
 
 The resulting `nutils.sample.Sample` object can be used to evaluate
-`nutils.function.Array` functions via the :meth:`Sample.eval(func)` method. To
+`nutils.function.Array` functions via the `Sample.eval(func)` method. To
 evaluate the geometry `ns.x` write
 
 ```python
@@ -45,9 +45,9 @@ Now, the first axis represents the simplices and the second axis the vertices
 of the simplices.
 
 If an `nutils.function.Array` function has arguments, those arguments must be
-specified by keyword arguments to :meth:`Sample.eval()`.  For example, to
-evaluate `ns.u` with argument `lhs` replaced by solution vector `lhs`, obtained
-using `nutils.solver.solve_linear` above, write
+specified by keyword arguments to `Sample.eval()`. For example, to evaluate
+`ns.u` with argument `lhs` replaced by solution vector `lhs`, obtained using
+`nutils.solver.solve_linear` above, write
 
 ```python
 u = bezier.eval('u' @ ns, lhs=lhs)

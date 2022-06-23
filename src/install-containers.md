@@ -8,9 +8,10 @@ tools such as [Docker](https://www.docker.com) or [Podman](https://podman.io).
 The images are hosted in [Github's container
 repository](https://github.com/evalf/nutils/pkgs/container/nutils).
 
-The container images include all the :ref:`examples`. To run one, add the name
-of the example and any additional arguments to the command line. For example,
-you can run example `laplace` using the latest version of Nutils with:
+The container images include all the official [examples](examples.md). To run
+one, add the name of the example and any additional arguments to the command
+line. For example, you can run example `laplace` using the latest version of
+Nutils with:
 
 ```sh
 docker run --rm -it ghcr.io/evalf/nutils:latest laplace

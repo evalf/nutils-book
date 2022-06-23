@@ -24,7 +24,7 @@ ns.x = geom
 
 You can now use `ns.x` where you would use `geom`. Usually you want to add the
 gradient, normal and jacobian of this geometry to the namespace as well. This
-can be done using :func:`~nutils.expression_v2.Namespace.define_for` naming the
+can be done using `nutils.expression_v2.Namespace.define_for` naming the
 geometry (as present in the namespace) and names for the gradient, normal, and
 the jacobian as keyword arguments:
 
