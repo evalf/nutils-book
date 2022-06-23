@@ -1,6 +1,6 @@
 # Installation
 
-Nutils requires a working installation of Python 3.5 or higher. Many different
+Nutils requires a working installation of Python 3.7 or higher. Many different
 installers exist and there are no known issues with any of them. When in doubt
 about which to use, a safe option is to go with the [official
 installer](https://www.python.org/downloads/). From there on Nutils can be
