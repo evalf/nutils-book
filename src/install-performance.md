@@ -38,7 +38,7 @@ export OMP_NUM_THREADS=1
 
 The downside to this approach is that multithreading is disabled for all
 applications that use openBLAS, not just Nutils. Alternatively in Linux the
-setting can be specified one-off in the form of a prefix::
+setting can be specified one-off in the form of a prefix:
 
 ```sh
 OMP_NUM_THREADS=1 NUTILS_NPROCS=8 python myscript.py

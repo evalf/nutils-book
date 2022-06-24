@@ -36,7 +36,7 @@ branch) can be installed directly by specifying it after the `@`.
 
 Finally, if we do desire a checkout of Nutils' source code, for instance to
 make changes to it, then we can instruct pip to install directly from the
-location on disk::
+location on disk:
 
 ```sh
 git clone https://github.com/evalf/nutils.git

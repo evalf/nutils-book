@@ -13,8 +13,8 @@ While not having mesh objects, Nutils does have a `nutils.mesh` module, which
 hosts functions that return tuples of topology and geometry. Nutils provides
 two builtin mesh generators: `nutils.mesh.rectilinear`, a generator for
 structured topologies (i.e. tensor products of one or more one-dimensional
-topologies), and :meth:`nutils.mesh.unitsquare`, a unit square mesh generator
-with square or triangular elements or a mixture of both.  The latter is mostly
+topologies), and `nutils.mesh.unitsquare`, a unit square mesh generator with
+square or triangular elements or a mixture of both.  The latter is mostly
 useful for testing. In addition to generators, Nutils also provides the
 `nutils.mesh.gmsh` importer for [gmsh](http://gmsh.info/)-generated meshes.
 
