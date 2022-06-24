@@ -1,5 +1,6 @@
 name: github pages
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -17,6 +18,7 @@ jobs:
       run: |
         ./mdbook build -d docs
     - name: Deploy GitHub Pages
+      if: github.event_name == 'push'
       run: |
         git add docs
         git config user.name "Github Pages"
