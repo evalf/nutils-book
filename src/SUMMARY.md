@@ -30,4 +30,7 @@
     - [Nutils 1 Bakmi](release-1.md)
     - [Nutils 0 Anelli](release-0.md)
 - [Examples](examples.md)
+- [Science](science.md)
+    - [Publications](science-publications.md)
+    - [Citing Nutils](science-citing.md)
 - [Support](support.md)
