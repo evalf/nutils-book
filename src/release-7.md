@@ -8,6 +8,10 @@ Nutils 7.1 was released on September 3rd, 2022.
 - ⧉ [Download](https://github.com/evalf/nutils/archive/refs/tags/v7.1.zip)
 - ⧉ [API Reference](http://docs.nutils.org/en/v7.1/)
 
+Nutils 7.2 was released on November 4th, 2022.
+- ⧉ [Download](https://github.com/evalf/nutils/archive/refs/tags/v7.2.zip)
+- ⧉ [API Reference](http://docs.nutils.org/en/v7.2/)
+
 ## What's New?
 
 These are the main additions and changes since [Nutils 6
