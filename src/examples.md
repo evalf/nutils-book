@@ -7,7 +7,7 @@ of physics and varying computational techniques:
 
 ⧉ <https://examples.nutils.org>
 
-The examples are taken both from the [nutils
+The examples are taken both from the [Nutils
 repository](https://github.com/evalf/nutils) and from user contributed
 repositories, and are tested regularly to confirm validity against different
 versions of Nutils.
@@ -19,6 +19,18 @@ this collection of examples. In doing so, they help other users get up to
 speed, they help the developers by adding to a large body of realistic codes to
 test Nutils against, and, in doing so, they may even help themselves by
 preventing future Nutils version from accidentally breaking their code.
+
+Examples should resemble the [official
+examples](https://github.com/evalf/nutils/tree/master/examples) from the Nutils
+repository. In particular, they:
+- use `cli.run` to call main function;
+- have reasonable default parameters corresponding to a simulation that is relevant but not overly expensive;
+- do not make use of undocumented functions (typically prefixed with an underscore);
+- use the most recent version of the [namespace](https://nutils.org/tutorial-namespace.html), if applicable;
+- generate one or more images that visualize the solution of the simulation;
+- use `treelog` to communicate output (`info` or `user` for text, `infofile` or `userfile` for data);
+- conform to the [PEP 8](https://peps.python.org/pep-0008/) coding style;
+- are concise enough to fit a single file.
 
 Examples are submitted by means of a pull request to the [examples
 repository](https://github.com/evalf/nutils-website), which should add a yaml
