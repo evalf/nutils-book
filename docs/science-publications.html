@@ -1,0 +1,434 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Publications - The Nutils Book</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">About Nutils</a></li><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> How to Read This Book</a></li><li class="chapter-item expanded "><a href="start.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="install-nutils.html"><strong aria-hidden="true">3.1.</strong> Installing Nutils</a></li><li class="chapter-item expanded "><a href="install-matrix.html"><strong aria-hidden="true">3.2.</strong> Installing a Matrix Backend</a></li><li class="chapter-item expanded "><a href="install-quality.html"><strong aria-hidden="true">3.3.</strong> Quality of Life</a></li><li class="chapter-item expanded "><a href="install-performance.html"><strong aria-hidden="true">3.4.</strong> Improving Performance</a></li><li class="chapter-item expanded "><a href="install-containers.html"><strong aria-hidden="true">3.5.</strong> Using Containers</a></li><li class="chapter-item expanded "><a href="install-remote.html"><strong aria-hidden="true">3.6.</strong> Remote Computing</a></li></ol></li><li class="chapter-item expanded "><a href="tutorial.html"><strong aria-hidden="true">4.</strong> Tutorial</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tutorial-theory.html"><strong aria-hidden="true">4.1.</strong> A Little Bit of Theory</a></li><li class="chapter-item expanded "><a href="tutorial-topovgeom.html"><strong aria-hidden="true">4.2.</strong> Topology vs Geometry</a></li><li class="chapter-item expanded "><a href="tutorial-bases.html"><strong aria-hidden="true">4.3.</strong> Bases</a></li><li class="chapter-item expanded "><a href="tutorial-functions.html"><strong aria-hidden="true">4.4.</strong> Functions</a></li><li class="chapter-item expanded "><a href="tutorial-namespace.html"><strong aria-hidden="true">4.5.</strong> Namespace</a></li><li class="chapter-item expanded "><a href="tutorial-integrals.html"><strong aria-hidden="true">4.6.</strong> Integrals</a></li><li class="chapter-item expanded "><a href="tutorial-solvers.html"><strong aria-hidden="true">4.7.</strong> Solvers</a></li><li class="chapter-item expanded "><a href="tutorial-sampling.html"><strong aria-hidden="true">4.8.</strong> Sampling</a></li><li class="chapter-item expanded "><a href="tutorial-laplace2d.html"><strong aria-hidden="true">4.9.</strong> 2D Laplace Problem</a></li></ol></li><li class="chapter-item expanded "><a href="release.html"><strong aria-hidden="true">5.</strong> Release History</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="release-8.html"><strong aria-hidden="true">5.1.</strong> Nutils 8 Idiyappam</a></li><li class="chapter-item expanded "><a href="release-7.html"><strong aria-hidden="true">5.2.</strong> Nutils 7 Hiyamugi</a></li><li class="chapter-item expanded "><a href="release-6.html"><strong aria-hidden="true">5.3.</strong> Nutils 6 Garak-Guksu</a></li><li class="chapter-item expanded "><a href="release-5.html"><strong aria-hidden="true">5.4.</strong> Nutils 5 Farfalle</a></li><li class="chapter-item expanded "><a href="release-4.html"><strong aria-hidden="true">5.5.</strong> Nutils 4 Eliche</a></li><li class="chapter-item expanded "><a href="release-3.html"><strong aria-hidden="true">5.6.</strong> Nutils 3 Dragon Beard</a></li><li class="chapter-item expanded "><a href="release-2.html"><strong aria-hidden="true">5.7.</strong> Nutils 2 Chuka Men</a></li><li class="chapter-item expanded "><a href="release-1.html"><strong aria-hidden="true">5.8.</strong> Nutils 1 Bakmi</a></li><li class="chapter-item expanded "><a href="release-0.html"><strong aria-hidden="true">5.9.</strong> Nutils 0 Anelli</a></li></ol></li><li class="chapter-item expanded "><a href="examples.html"><strong aria-hidden="true">6.</strong> Examples</a></li><li class="chapter-item expanded "><a href="science.html"><strong aria-hidden="true">7.</strong> Science</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="science-publications.html" class="active"><strong aria-hidden="true">7.1.</strong> Publications</a></li><li class="chapter-item expanded "><a href="science-citing.html"><strong aria-hidden="true">7.2.</strong> Citing Nutils</a></li></ol></li><li class="chapter-item expanded "><a href="support.html"><strong aria-hidden="true">8.</strong> Support</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Nutils Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/evalf/nutils-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="publications"><a class="header" href="#publications">Publications</a></h1>
+<p>Below is an overview of mostly peer reviewed articles that use Nutils for
+numerical experiments. In case your Nutils powered research is not listed here,
+please send the DOI to <a href="mailto:info@nutils.org">info@nutils.org</a> or submit a
+<a href="https://github.com/evalf/nutils-book">pull request</a> with the new entry.
+Articles that <a href="science-citing.html">cite Nutils</a> will be picked up automatically.</p>
+<h2 id="2022"><a class="header" href="#2022">2022</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2022.115162">Entropy bounds for the space–time discontinuous Galerkin finite element moment method applied to the BGK–Boltzmann equation</a>
+by M.R.A. Abdelmalik, D.A.M. van der Woude and E.H.van Brummelen,
+<em>Computer Methods in Applied Mechanics and Engineering</em>,
+August 2022.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1093/jom/ufac015">Residual-based error estimation and adaptivity for stabilized immersed isogeometric analysis using truncated hierarchical B-splines</a>
+by S.C. Divi, P.H. van Zuijlen, T. Hoang, F. de Prenter, F. Auricchio, A. Reali, E.H. van Brummelen and C.V. Verhoosel,
+<em>Journal of Mechanics</em>,
+May 2022.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1002/nag.3365">Inverting elastic dislocations using the Weakly-enforced Slip Method</a>
+by G.J. van Zwieten, E.H. van Brummelen and R.F. Hanssen,
+<em>Numerical and Analytical Methods in Geomechanics</em>,
+April 2022.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.12688/openreseurope.14445.1">preCICE v2: A sustainable and user-friendly coupling library</a>
+by G. Chourdakis, K. Davis, B. Rodenberg, M. Schulte, F. Simonis, B. Uekermann, G. Abrams, H. Bungartz, L.C. Yau, I. Desai, K. Eder, R. Hertrich, F. Lindner, A. Rusch, D. Sashko, D. Schneider, A. Totounferoush, D. Volland, P. Vollmer and O.Z. Koseomur,
+<em>Open Research Europe</em>,
+April 2022.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2022.114648">Topology-preserving scan-based immersed isogeometric analysis</a>
+by S.C. Divi, C.V. Verhoosel, F. Auricchio, A. Reali and E.H. van Brummelen,
+<em>Computer Methods in Applied Mechanics and Engineering</em>,
+March 2022.</p>
+</li>
+</ul>
+<h2 id="2021"><a class="header" href="#2021">2021</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1109/TMAG.2021.3059903">Anisotropic Congruency-Based Vector Hysteresis Model Applied to Non-Oriented Laminated Steels</a>
+by R. Zeinali, D. Krop and E. Lomonova,
+<em>IEEE Transactions on Magnetics</em>,
+June 2021.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.3390/mca26010023">Finite Element Analysis of Laminar Heat Transfer within an Axial-Flux Permanent Magnet Machine</a>
+by R. Willems, L.A.J. Friedrich and C.V. Verhoosel,
+<em>Mathematical and Computational Applications</em>,
+February 2021.</p>
+<p><a href="https://doi.org/10.3390/j4010002">Time- and Frequency-Domain Steady-State Solutions of Nonlinear Motional Eddy Currents Problems</a>
+by L.A.J. Friedrich,
+<em>Computation of Electromagnetic Fields (Special Issue)</em>,
+January 2021.</p>
+</li>
+</ul>
+<h2 id="2020"><a class="header" href="#2020">2020</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1016/j.camwa.2020.03.026">Error-estimate-based adaptive integration for immersed isogeometric analysis</a>
+by S.C. Divi, C.V. Verhoosel, F. Auricchio, A. Reali and E.H. van Brummelen,
+<em>Computers &amp; Mathematics with Applications</em>,
+December 2020.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1103/PhysRevX.10.031067">Singular Nature of the Elastocapillary Ridge</a>
+by A. Pandey, B. Andreotti, S. Karpitschka, G.J. van Zwieten, E.H. van Brummelen and J.H. Snoeijer,
+<em>Physical Review X</em>,
+September 2020.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1007/s10596-019-09931-7">A staggered finite element procedure for the coupled Stokes-Biot system with fluid entry resistance</a>
+by E.A. Bergkamp, C.V. Verhoosel, J.J.C. Remmers and D.M.J Smeulders,
+<em>Computational Geosciences</em>,
+May 2020.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1007/978-3-030-30705-9_8">Entropy Stable Discontinuous Galerkin Finite Element Moment Methods for Compressible Fluid Dynamics</a>
+by M.R.A. Abdelmalik and E.H. van Brummelen,
+<em>Part of the Lecture Notes in Computational Science and Engineering book series</em>,
+February 2020.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1088/1742-6596/1669/1/012032">Splipy: B-Spline and NURBS Modelling in Python</a>
+by K.A. Johannessen and E. Fonn,
+<em>Journal of Physics: Conference Series</em>,
+January 2020.</p>
+</li>
+</ul>
+<h2 id="2019"><a class="header" href="#2019">2019</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1007/s00466-019-01796-y">Multigrid solvers for immersed finite element methods and immersed isogeometric analysis</a>
+by F. de Prenter, C.V. Verhoosel, E.H. van Brummelen, J.A. Evans, C. Messe, J. Benzaken and K. Maute,
+<em>Computational Mechanics</em>,
+November 2019.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.48550/arXiv.1910.12588">Isogeometric Analysis of the Gray-Scott Reaction-Diffusion Equations for Pattern Formation on Evolving Surfaces and Applications to Human Gyrification</a>
+by J. Hinz, J. van Zwieten, M. Möller and F. Vermolen,
+<em>Arxiv</em>,
+October 2019.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2019.01.030">Preconditioning immersed isogeometric finite element methods with application to flow problems</a>
+by F. de Prenter, C.V. Verhoosel and E.H. van Brummelen,
+<em>Computer Methods in Applied Mechanics and Engineering</em>,
+May 2019.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.3390/en12071271">Finite-Volume High-Fidelity Simulation Combined with Finite-Element-Based Reduced-Order Modeling of Incompressible Flow Problems</a>
+by E. Fonn, T. Kvamsdal and A. Rasheed,
+<em>Energies</em>,
+April 2019.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2018.10.015">Skeleton-stabilized immersogeometric analysis for incompressible viscous flow problems</a>
+by T. Hoang, C.V. Verhoosel, C. Qin, F. Auricchio, A. Reali and E.H. van Brummelen,
+<em>Computer Methods in Applied Mechanics and Engineering</em>,
+February 2019.</p>
+</li>
+</ul>
+<h2 id="2018"><a class="header" href="#2018">2018</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1016/j.cagd.2018.03.023">Elliptic grid generation techniques in the framework of isogeometric analysis applications</a>
+by J. Hinz, M. Möller and C. Vuik,
+<em>Computer Aided Geometric Design</em>,
+October 2018.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1088/1757-899X/425/1/012030">Spline-Based Parameterization Techniques for Twin-Screw Machine Geometries</a>
+by J. Hinz, M. Möller and C. Vuik,
+<em>IOP Conference Series: Materials Science and Engineering</em>,
+September 2018.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2018.03.034">Skeleton-stabilized IsoGeometric Analysis: High-regularity interior-penalty methods for incompressible viscous flow problems</a>
+by T. Hoang, C.V. Verhoosel, F. Auricchio, E.H. van Brummelen and A. Reali,
+<em>Computer Methods in Applied Mechanics and Engineering</em>,
+August 2018.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1007/s00226-018-1038-6">Fracture behaviour of historic and new oak wood</a>
+by R.A. Luimes, A.S.J. Suiker, C.V. Verhoosel and H.L. Schellen,
+<em>Wood Science and Technology</em>,
+July 2018.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.camwa.2018.03.032">A note on the stability parameter in Nitsche's method for unfitted boundary value problems</a>
+by F. de Prenter, C. Lehrenfeld and A. Massing,
+<em>Computers &amp; Mathematics with Applications</em>,
+April 2018. </p>
+</li>
+</ul>
+<h2 id="2017"><a class="header" href="#2017">2017</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2017.06.024">Error estimation and adaptive moment hierarchies for goal-oriented approximations of the Boltzmann equation</a>
+by M.R.A. Abdelmalik and E.H. van Brummelen,
+<em>Computer Methods in Applied Mechanics and Engineering</em>,
+October 2017.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1007/s10596-017-9667-7">An MSSS-preconditioned matrix equation approach for the time-harmonic elastic wave equation at multiple frequencies</a>
+by M. Baumann, R. Astudillo, Y. Qiu, E.Y.M. Ang, M.B. van Gijzen and R.E. Plessix,
+<em>Springer Computational Geosciences</em>,
+June 2017.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2016.07.027">Mixed Isogeometric Finite Cell Methods for the Stokes problem</a>
+by T. Hoang, C.V. Verhoosel, F. Auricchio, E.H. van Brummelen and A. Reali,
+<em>Computer Methods in Applied Mechanics and Engineering</em>,
+April 2017.</p>
+</li>
+</ul>
+<h2 id="2016"><a class="header" href="#2016">2016</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1007/978-3-319-40827-9_35">Elasto-capillarity Simulations based on the Navier-Stokes-Cahn-Hilliard Equations</a>
+by E.H. Van Brummelen, M. Shokrpour-Roudbari and G.J. Van Zwieten,
+<em>Advances in Computational Fluid-Structure Interaction and Flow Simulation</em>,
+October 2016.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.finel.2015.12.005">A fracture-controlled path-following technique for phase-field modeling of brittle fracture</a>
+by N. Singh, C.V. Verhoosel, R. de Borst and E.H. van Brummelen,
+<em>Finite Elements in Analysis and Design</em>,
+June 2016.</p>
+</li>
+<li>
+<p><a href="http://dx.doi.org/10.1016/j.cma.2016.07.006">Condition number analysis and preconditioning of the finite cell method</a>
+by F. de Prenter, C.V. Verhoosel, G.J. van Zwieten and E.H. van Brummelen,
+<em>Computer Methods in Applied Mechanics and Engineering</em>,
+January 2016.</p>
+</li>
+</ul>
+<h2 id="2015"><a class="header" href="#2015">2015</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2014.11.019">Duality-based two-level error estimation for time-dependent PDEs: Application to linear and nonlinear parabolic equations</a>
+by G. Şimşek, X. Wu, K.G. van der Zee and E.H. van Brummelen,
+<em>Computer Methods in Applied Mechanics and Engineering</em>,
+May 2015.</p>
+</li>
+<li>
+<p><a href="http://doi.org/10.1002/nme.4952">On the use of adaptive refinement in isogeometric digitalimage correlation</a>
+S.M. Kleinendorst, J.P.M. Hoefnagels, C.V. Verhoosel and A.P. Ruybalid,
+<em>International Journal for Numerical Methods in Engineering</em>,
+May 2015.</p>
+</li>
+<li>
+<p><a href="http://dx.doi.org/10.1016/j.cma.2014.07.009">Image-based goal-oriented adaptive isogeometric analysis with application to the micro-mechanical modeling of trabecular bone</a>
+by C.V. Verhoosel, G.J. van Zwietena, B. van Rietbergen and R. de Borst,
+<em>Computer Methods in Applied Mechanics and Engineering</em>,
+February 2015.</p>
+</li>
+<li>
+<p><a href="http://dx.doi.org/10.1016/j.cma.2014.09.037">A finite-element/boundary-element method for three-dimensional, large-displacement fluid–structure-interaction</a>
+by T.M. van Opstal, E.H. van Brummelen and G.J. van Zwieten,
+<em>Computer Methods in Applied Mechanics and Engineering</em>,
+February 2015.</p>
+</li>
+</ul>
+<h2 id="2014"><a class="header" href="#2014">2014</a></h2>
+<ul>
+<li><a href="http://dx.doi.org/10.1016/j.cma.2013.12.004">Discontinuities without discontinuity: The Weakly-enforced Slip Method</a>
+by G.J. van Zwietena, E.H. van Brummelen, K.G. van der Zee, M.A. Gutiérrez and R.F. Hanssen,
+<em>Computer Methods in Applied Mechanics and Engineering</em>,
+April 2014.</li>
+</ul>
+<h2 id="2013"><a class="header" href="#2013">2013</a></h2>
+<ul>
+<li>
+<p><a href="http://dx.doi.org/10.1002/cnm.2597">Stabilized second-order convex splitting schemes for Cahn–Hilliard models with application to diffuse-interface tumor-growth models</a>
+by X. Wu, G.J. van Zwieten and K.G. van der Zee,
+<em>Special Issue of Numerical Methods and Applications of Multi-Physics in Biomechanical Modeling</em>,
+September 2013.</p>
+</li>
+<li>
+<p><a href="http://www.tue.nl/fileadmin/content/faculteiten/wtb/Onderzoek/Onderzoeksgroepen/multiscale-engineering-fluid-dynamics/wu_vanZwieten_vanderZee_2013.pdf">Adaptive Time-Stepping for Cahn-Hilliard-type Equations with Application to Diffuse-Interface Tumor-growth Models (pdf)</a>
+by X. Wu, G.J. Van Zwieten, K.G. van der Zee and G. Simsek,
+<em>ADMOS 2013</em>,
+March 2013.</p>
+</li>
+<li>
+<p><a href="http://dx.doi.org/10.1007/978-94-007-6143-8_5">Shape-Newton Method for Isogeometric Discretizations of Free-Boundary Problems</a>
+by K.G. van der Zee, G.J. van Zwieten, C.V. Verhoosel and E.H. van Brummelen,
+<em>MARINE 2011, IV International Conference on Computational Methods in Marine Engineering</em>,
+February 2013.</p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="science.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="science-citing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="science.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="science-citing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
