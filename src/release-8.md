@@ -1,8 +1,8 @@
 # Nutils 8 Idiyappam
 
 Nutils 8.0 was released on July 28th, 2023.
-- ⧉ [Download](https://github.com/evalf/nutils/archive/refs/tags/v8.0.zip)
-- ⧉ [API Reference](http://docs.nutils.org/en/v8.0/)
+- [Download](https://github.com/evalf/nutils/archive/refs/tags/v8.0.zip) (zip)
+- [API Reference](http://docs.nutils.org/en/v8.0/)
 
 ## What's New?
 

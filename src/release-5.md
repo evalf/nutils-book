@@ -1,16 +1,16 @@
 # Nutils 5 Farfalle
 
 Nutils 5.0 was released on April 3rd, 2020.
-- ⧉ [Download](https://github.com/evalf/nutils/archive/refs/tags/v5.0.zip)
-- ⧉ [API Reference](http://docs.nutils.org/en/v5.0/)
+- [Download](https://github.com/evalf/nutils/archive/refs/tags/v5.0.zip) (zip)
+- [API Reference](http://docs.nutils.org/en/v5.0/)
 
 Nutils 5.1 was released on September 3rd, 2019.
-- ⧉ [Download](https://github.com/evalf/nutils/archive/refs/tags/v5.1.zip)
-- ⧉ [API Reference](http://docs.nutils.org/en/v5.1/)
+- [Download](https://github.com/evalf/nutils/archive/refs/tags/v5.1.zip) (zip)
+- [API Reference](http://docs.nutils.org/en/v5.1/)
 
 Nutils 5.2 was released on June 11th, 2019.
-- ⧉ [Download](https://github.com/evalf/nutils/archive/refs/tags/v5.2.zip)
-- ⧉ [API Reference](http://docs.nutils.org/en/v5.2/)
+- [Download](https://github.com/evalf/nutils/archive/refs/tags/v5.2.zip) (zip)
+- [API Reference](http://docs.nutils.org/en/v5.2/)
 
 ## What's New?
 

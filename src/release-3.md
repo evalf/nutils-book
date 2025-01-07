@@ -1,12 +1,12 @@
 # Nutils 3 Dragon Beard
 
 Nutils 3.0 was released on August 22nd, 2018.
-- ⧉ [Download](https://github.com/evalf/nutils/archive/refs/tags/v3.0.zip)
-- ⧉ [API Reference](http://docs.nutils.org/en/v3.0/)
+- [Download](https://github.com/evalf/nutils/archive/refs/tags/v3.0.zip) (zip)
+- [API Reference](http://docs.nutils.org/en/v3.0/)
 
 Nutils 3.1 was released on February 5th, 2018.
-- ⧉ [Download](https://github.com/evalf/nutils/archive/refs/tags/v3.1.zip)
-- ⧉ [API Reference](http://docs.nutils.org/en/v3.1/)
+- [Download](https://github.com/evalf/nutils/archive/refs/tags/v3.1.zip) (zip)
+- [API Reference](http://docs.nutils.org/en/v3.1/)
 
 ## What's New?
 
