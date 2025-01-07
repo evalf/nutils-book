@@ -1,10 +1,8 @@
 # Nutils 4 Eliche
 
-Nutils 4.0 was released on June 11th, 2019.
-- [Download](https://github.com/evalf/nutils/archive/refs/tags/v4.0.zip) (zip)
-- [API Reference](http://docs.nutils.org/en/v4.0/)
-
-Nutils 4.1 was released on August 28th, 2018.
+Nutils 4 was released on June 11th, 2019 and saw one point release for fixes
+and backports. The most recent and final version in this series is Nutils 4.1
+was released on August 28th, 2018.
 - [Download](https://github.com/evalf/nutils/archive/refs/tags/v4.1.zip) (zip)
 - [API Reference](http://docs.nutils.org/en/v4.1/)
 

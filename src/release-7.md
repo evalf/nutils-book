@@ -1,18 +1,8 @@
 # Nutils 7 Hiyamugi
 
-Nutils 7.0 was released on January 1st, 2022.
-- [Download](https://github.com/evalf/nutils/archive/refs/tags/v7.0.zip) (zip)
-- [API Reference](http://docs.nutils.org/en/v7.0/)
-
-Nutils 7.1 was released on September 3rd, 2022.
-- [Download](https://github.com/evalf/nutils/archive/refs/tags/v7.1.zip) (zip)
-- [API Reference](http://docs.nutils.org/en/v7.1/)
-
-Nutils 7.2 was released on November 4th, 2022.
-- [Download](https://github.com/evalf/nutils/archive/refs/tags/v7.2.zip) (zip)
-- [API Reference](http://docs.nutils.org/en/v7.2/)
-
-Nutils 7.3 was released on June 20th, 2023.
+Nutils 7 was released on January 1st, 2022 and saw three point releases for
+fixes and backports. The most recent and final version in this series is Nutils
+7.3, released on June 20th, 2023.
 - [Download](https://github.com/evalf/nutils/archive/refs/tags/v7.3.zip) (zip)
 - [API Reference](http://docs.nutils.org/en/v7.3/)
 

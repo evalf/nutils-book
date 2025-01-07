@@ -5,7 +5,7 @@ from existing scripts. Aiming to facilitate this practice, the following
 website provides an overview of concise examples demonstrating different areas
 of physics and varying computational techniques:
 
-⧉ <https://examples.nutils.org>
+<https://examples.nutils.org>
 
 The examples are taken both from the [Nutils
 repository](https://github.com/evalf/nutils) and from user contributed
