@@ -1,20 +1,10 @@
 # Nutils 6 Garak-Guksu
 
-Nutils 6.0 was released on April 29th, 2020.
-- ⧉ [Download](https://github.com/evalf/nutils/archive/refs/tags/v6.0.zip)
-- ⧉ [API Reference](http://docs.nutils.org/en/v6.0/)
-
-Nutils 6.1 was released on July 17th, 2020.
-- ⧉ [Download](https://github.com/evalf/nutils/archive/refs/tags/v6.1.zip)
-- ⧉ [API Reference](http://docs.nutils.org/en/v6.1/)
-
-Nutils 6.2 was released on October 7th, 2020.
-- ⧉ [Download](https://github.com/evalf/nutils/archive/refs/tags/v6.2.zip)
-- ⧉ [API Reference](http://docs.nutils.org/en/v6.2/)
-
-Nutils 6.3 was released on November 18th, 2021.
-- ⧉ [Download](https://github.com/evalf/nutils/archive/refs/tags/v6.3.zip)
-- ⧉ [API Reference](http://docs.nutils.org/en/v6.3/)
+Nutils 6 was released on April 29th, 2020 and saw three point releases for
+fixes and backports. The most recent and final version in this series is Nutils
+6.3, released on November 18th, 2021.
+- [Download](https://github.com/evalf/nutils/archive/refs/tags/v6.3.zip) (zip)
+- [API Reference](http://docs.nutils.org/en/v6.3/)
 
 ## What's New?
 

@@ -1,16 +1,15 @@
 # Examples
 
 The fastest way to build a new Nutils simulation is to borrow bits and pieces
-from existing scripts. Aiming to facilitate this practice, the following
-website provides an overview of concise examples demonstrating different areas
-of physics and varying computational techniques:
+from existing scripts. Aiming to facilitate this practice,
+[examples.nutils.org](https://examples.nutils.org) provides a gallery of
+concise examples demonstrating different areas of physics and varying
+computational techniques.
 
-⧉ <https://examples.nutils.org>
-
-The examples are taken both from the [Nutils
-repository](https://github.com/evalf/nutils) and from user contributed
-repositories, and are tested regularly to confirm validity against different
-versions of Nutils.
+The examples are taken from both the Nutils
+[repository](https://github.com/evalf/nutils/tree/master/examples) and user
+contributed repositories, and are tested regularly to confirm validity against
+different versions of Nutils.
 
 ## Contributing
 

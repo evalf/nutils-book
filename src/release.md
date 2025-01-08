@@ -27,5 +27,5 @@ granted that their code may require continuous updating as features develop —
 keep an eye on the changelog in the project root! The development version is
 continuously updated here:
 
-- ⧉ [Download](https://github.com/evalf/nutils/archive/refs/heads/master.zip)
-- ⧉ [API Reference](http://docs.nutils.org/en/latest/)
+- [Download](https://github.com/evalf/nutils/archive/refs/heads/master.zip) (zip)
+- [API Reference](http://docs.nutils.org/en/latest/)
