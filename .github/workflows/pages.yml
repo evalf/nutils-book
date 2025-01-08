@@ -13,10 +13,13 @@ jobs:
         fetch-depth: 0
     - name: Install mdbook
       run: |
-        curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.14/mdbook-v0.4.14-x86_64-unknown-linux-gnu.tar.gz | tar -xz
+        cargo install mdbook --no-default-features
+    - name: Install mdbook-katex
+      run: |
+        cargo install mdbook-katex
     - name: Build book
       run: |
-        ./mdbook build -d docs
+        mdbook build -d docs
     - name: Deploy GitHub Pages
       if: github.event_name == 'push'
       run: |

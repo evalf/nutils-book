@@ -2,24 +2,24 @@
 
 All of the above was written for a one-dimensional example.  We now extend the
 Laplace problem to two dimensions and highlight the changes to the
-corresponding Nutils implementation.  Let \\( Ω \\) be a unit square with
-boundary \\( Γ \\), on which the following boundary conditions apply:
+corresponding Nutils implementation.  Let $Ω$ be a unit square with
+boundary $Γ$, on which the following boundary conditions apply:
 
-\\[ \begin{cases}
-u = 0 & Γ_\text{left} \\\\
-\frac{∂u}{∂x_i} n_i = 0 & Γ_\text{bottom} \\\\
-\frac{∂u}{∂x_i} n_i = \cos(1) \cosh(x_1) & Γ_\text{right} \\\\
+$$ \begin{cases}
+u = 0 & Γ_\text{left} \\
+\frac{∂u}{∂x_i} n_i = 0 & Γ_\text{bottom} \\
+\frac{∂u}{∂x_i} n_i = \cos(1) \cosh(x_1) & Γ_\text{right} \\
 u = \cosh(1) \sin(x_0) & Γ_\text{top}
-\end{cases} \\]
+\end{cases} $$
 
-The 2D homogeneous Laplace solution is the field \\( u \\) for which \\( R(v,
-u) = 0 \\) for all v, where
+The 2D homogeneous Laplace solution is the field $u$ for which $R(v,
+u) = 0$ for all v, where
 
-\\[ R(v, u) := \int_Ω \frac{∂v}{∂x_i} \frac{∂u}{∂x_i} \ dV - \int_{Γ_\text{right}} v \cos(1) \cosh(x_1) \ dS. \\]
+$$ R(v, u) := \int_Ω \frac{∂v}{∂x_i} \frac{∂u}{∂x_i} \ dV - \int_{Γ_\text{right}} v \cos(1) \cosh(x_1) \ dS. $$
 
-Adopting a Finite Element basis \\( \{φ_n\} \\) we obtain the discrete solution
-\\( \hat{u}(x) = φ_n(x) \hat{u}_n \\) and the system of equations \\( R(φ_n,
-\hat{u}) = 0 \\).
+Adopting a Finite Element basis $\{φ_n\}$ we obtain the discrete solution
+$\hat{u}(x) = φ_n(x) \hat{u}_n$ and the system of equations $R(φ_n,
+\hat{u}) = 0$.
 
 Following the same steps as in the 1D case, a unit square mesh with 10x10
 elements is formed using `nutils.mesh.rectilinear`:
