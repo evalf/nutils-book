@@ -11,10 +11,19 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - name: Cache mdbook binaries
+      id: cache
+      uses: actions/cache@v4
+      with:
+        key: ${{ runner.os }}
+        path: |
+          ~/.cargo/bin
     - name: Install mdbook
+      if: ${{ steps.cache.outputs.cache-hit != 'true' }}
       run: |
         cargo install mdbook --no-default-features
     - name: Install mdbook-katex
+      if: ${{ steps.cache.outputs.cache-hit != 'true' }}
       run: |
         cargo install mdbook-katex
     - name: Build book
