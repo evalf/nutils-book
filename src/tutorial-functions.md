@@ -74,5 +74,4 @@ solution](tutorial-theory.md#discrete-solution) can be written as
 ns.u = function.dotarg('lhs', ns.basis)
 ```
 
-with the argument identified by `'lhs'` the vector of unknowns \\( \hat{u}_n
-\)).
+with the argument identified by `'lhs'` the vector of unknowns $\hat{u}_n$.
