@@ -17,40 +17,38 @@ ipython. In the sections that follow we will go over these lines ones by one
 and explain the relevant concepts involved.
 
 ```python
-from nutils import function, mesh, solver
+from nutils import mesh, function, export, solver
 from nutils.expression_v2 import Namespace
+from matplotlib import pyplot
 import numpy
-from matplotlib import pyplot as plt
 
 topo, geom = mesh.rectilinear([numpy.linspace(0, 1, 5)])
 
 ns = Namespace()
 ns.x = geom
 ns.define_for('x', gradient='∇', normal='n', jacobians=('dV', 'dS'))
-ns.basis = topo.basis('spline', degree=1)
-ns.u = function.dotarg('lhs', ns.basis)
+ns.u = topo.field('u', btype='spline', degree=2)
+ns.v = topo.field('v', btype='spline', degree=2)
 
-sqr = topo.boundary['left'].integral('u^2 dS' @ ns, degree=2)
-cons = solver.optimize('lhs', sqr, droptol=1e-15)
+sqr = topo.boundary['left'].integral('(u - 1)^2 dS' @ ns, degree=2)
+cons = solver.System(sqr, trial='u').solve_constraints(droptol=1e-15)
 # optimize > constrained 1/5 dofs
 # optimize > optimum value 0.00e+00
 
-res = topo.integral('∇_i(basis_n) ∇_i(u) dV' @ ns, degree=0)
-res -= topo.boundary['right'].integral('basis_n dS' @ ns, degree=0)
-lhs = solver.solve_linear('lhs', residual=res, constrain=cons)
+res = topo.integral('(∇_k(v) ∇_k(u) + 2 v) dV' @ ns, degree=2)
+res -= topo.boundary['right'].integral('v dS' @ ns, degree=2)
+args = solver.System(res, trial='u', test='v').solve(constrain=cons)
 # solve > solving 4 dof system to machine precision using arnoldi solver
 # solve > solver returned with residual 9e-16±1e-15
 
-bezier = topo.sample('bezier', 32)
-nanjoin = lambda array, tri: numpy.insert(array.take(tri.flat, 0).astype(float),
-    slice(tri.shape[1], tri.size, tri.shape[1]), numpy.nan, axis=0)
-sampled_x = nanjoin(bezier.eval('x_0' @ ns), bezier.tri)
-def plot_line(func, **arguments):
-    plt.plot(sampled_x, nanjoin(bezier.eval(func, **arguments), bezier.tri))
-    plt.xlabel('x_0')
-    plt.xticks(numpy.linspace(0, 1, 5))
+def myplot(topo, geom, func, arguments={}):
+    bezier = topo.sample('bezier', 9)
+    x, fs = bezier.eval([geom, list(func) if func.ndim else [func]], arguments=arguments)
+    fig, axs = pyplot.subplots(nrows=len(fs), sharex=True, squeeze=False)
+    for (ax,), f in zip(axs, fs):
+        export.triplot(ax, x, f, tri=bezier.tri, hull=bezier.hull)
 
-plot_line(ns.u, lhs=lhs)
+myplot(topo, ns.x, ns.u, args)
 ```
 ![output](tutorial-fig1.svg)
 
