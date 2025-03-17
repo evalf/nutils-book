@@ -67,8 +67,8 @@ Integrating and evaluating a 1D `nutils.function.Array` results in a 1D
 `numpy.ndarray`:
 
 ```python
->>> topo.integral('basis_i dV' @ ns, degree=1).eval()
-array([0.125, 0.25 , 0.25 , 0.25 , 0.125])±1e-15
+topo.integral('basis_i dV' @ ns, degree=1).eval()
+# array([0.125, 0.25 , 0.25 , 0.25 , 0.125])±1e-15
 ```
 
 Since the integrals of 2D `nutils.function.Array` functions are usually sparse,

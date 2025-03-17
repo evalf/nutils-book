@@ -85,7 +85,7 @@ The resulting `ns.e` is an ordinary `nutils.function.Array`.  Note that the
 variables used in the expression should exist in the namespace, not just as a
 local variable:
 
-```python
+```python (skip)
 localvar = 1
 ns.f = '2 localvar'
 # Traceback (most recent call last):

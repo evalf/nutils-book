@@ -59,7 +59,7 @@ We can now plot the sampled geometry `x` and solution `u` using `matplotlib`_,
 plotting each line in `Sample.tri` with a different color:
 
 ```python
->>> plt.plot(x.take(bezier.tri.T, 0), u.take(bezier.tri.T, 0))
+plt.plot(x.take(bezier.tri.T, 0), u.take(bezier.tri.T, 0))
 ```
 ![output](tutorial-sampling-fig1.svg)
 

@@ -44,15 +44,15 @@ Several trigonometric functions are defined in the `nutils.function` module.
 An example with a sine function:
 
 ```python
-plot_line(function.sin(2*geom[0]*numpy.pi))
+plot_line(numpy.sin(2*geom[0]*numpy.pi))
 ```
 ![output](tutorial-functions-fig3.svg)
 
-The dot product is available via `nutils.function.dot`. To contract the basis
-with an arbitrary coefficient vector:
+The dot product is available via the '@' operator. To contract the basis with an
+arbitrary coefficient vector:
 
 ```python
-plot_line(function.dot(basis, [1,2,0,5,4]))
+plot_line(basis @ [1,2,0,5,4])
 ```
 ![output](tutorial-functions-fig4.svg)
 
@@ -66,12 +66,12 @@ coefficients for which this function solves the Laplace problem.
 A discrete model is often written in terms of an unknown, or a vector of
 unknowns.  In Nutils this translates to a function argument,
 `nutils.function.Argument`. Usually an argument is used in an inner product
-with a basis. For this purpose there exists the `nutils.function.dotarg`
+with a basis. For this purpose there exists the `nutils.function.field`
 function. For example, the [discrete
 solution](tutorial-theory.md#discrete-solution) can be written as
 
 ```python
-ns.u = function.dotarg('lhs', ns.basis)
+ns.u = function.field('lhs', ns.basis)
 ```
 
 with the argument identified by `'lhs'` the vector of unknowns $\hat{u}_n$.

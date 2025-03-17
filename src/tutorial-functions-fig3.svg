@@ -37,7 +37,7 @@ L 0 3.5
       </g>
      </g>
      <g id="text_1">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: middle" x="73.832727" y="322.182437" transform="rotate(-0, 73.832727, 322.182437)">0.00</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="73.832727" y="322.182437" transform="rotate(-0 73.832727 322.182437)">0.00</text>
      </g>
     </g>
     <g id="xtick_2">
@@ -47,7 +47,7 @@ L 0 3.5
       </g>
      </g>
      <g id="text_2">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: middle" x="154.996364" y="322.182437" transform="rotate(-0, 154.996364, 322.182437)">0.25</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="154.996364" y="322.182437" transform="rotate(-0 154.996364 322.182437)">0.25</text>
      </g>
     </g>
     <g id="xtick_3">
@@ -57,7 +57,7 @@ L 0 3.5
       </g>
      </g>
      <g id="text_3">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: middle" x="236.16" y="322.182437" transform="rotate(-0, 236.16, 322.182437)">0.50</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="236.16" y="322.182437" transform="rotate(-0 236.16 322.182437)">0.50</text>
      </g>
     </g>
     <g id="xtick_4">
@@ -67,7 +67,7 @@ L 0 3.5
       </g>
      </g>
      <g id="text_4">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: middle" x="317.323636" y="322.182437" transform="rotate(-0, 317.323636, 322.182437)">0.75</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="317.323636" y="322.182437" transform="rotate(-0 317.323636 322.182437)">0.75</text>
      </g>
     </g>
     <g id="xtick_5">
@@ -77,11 +77,11 @@ L 0 3.5
       </g>
      </g>
      <g id="text_5">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: middle" x="398.487273" y="322.182437" transform="rotate(-0, 398.487273, 322.182437)">1.00</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="398.487273" y="322.182437" transform="rotate(-0 398.487273 322.182437)">1.00</text>
      </g>
     </g>
     <g id="text_6">
-     <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: middle" x="236.16" y="335.684" transform="rotate(-0, 236.16, 335.684)">x_0</text>
+     <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="236.16" y="335.684" transform="rotate(-0 236.16 335.684)">x_0</text>
     </g>
    </g>
    <g id="matplotlib.axis_2">
@@ -97,7 +97,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_7">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: end" x="50.6" y="299.287219" transform="rotate(-0, 50.6, 299.287219)">−1.00</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="50.6" y="299.287219" transform="rotate(-0 50.6 299.287219)">−1.00</text>
      </g>
     </g>
     <g id="ytick_2">
@@ -107,7 +107,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_8">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: end" x="50.6" y="269.047219" transform="rotate(-0, 50.6, 269.047219)">−0.75</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="50.6" y="269.047219" transform="rotate(-0 50.6 269.047219)">−0.75</text>
      </g>
     </g>
     <g id="ytick_3">
@@ -117,7 +117,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_9">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: end" x="50.6" y="238.807219" transform="rotate(-0, 50.6, 238.807219)">−0.50</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="50.6" y="238.807219" transform="rotate(-0 50.6 238.807219)">−0.50</text>
      </g>
     </g>
     <g id="ytick_4">
@@ -127,7 +127,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_10">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: end" x="50.6" y="208.567219" transform="rotate(-0, 50.6, 208.567219)">−0.25</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="50.6" y="208.567219" transform="rotate(-0 50.6 208.567219)">−0.25</text>
      </g>
     </g>
     <g id="ytick_5">
@@ -137,7 +137,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_11">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: end" x="50.6" y="178.327219" transform="rotate(-0, 50.6, 178.327219)">0.00</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="50.6" y="178.327219" transform="rotate(-0 50.6 178.327219)">0.00</text>
      </g>
     </g>
     <g id="ytick_6">
@@ -147,7 +147,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_12">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: end" x="50.6" y="148.087219" transform="rotate(-0, 50.6, 148.087219)">0.25</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="50.6" y="148.087219" transform="rotate(-0 50.6 148.087219)">0.25</text>
      </g>
     </g>
     <g id="ytick_7">
@@ -157,7 +157,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_13">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: end" x="50.6" y="117.847219" transform="rotate(-0, 50.6, 117.847219)">0.50</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="50.6" y="117.847219" transform="rotate(-0 50.6 117.847219)">0.50</text>
      </g>
     </g>
     <g id="ytick_8">
@@ -167,7 +167,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_14">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: end" x="50.6" y="87.607219" transform="rotate(-0, 50.6, 87.607219)">0.75</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="50.6" y="87.607219" transform="rotate(-0 50.6 87.607219)">0.75</text>
      </g>
     </g>
     <g id="ytick_9">
@@ -177,7 +177,7 @@ L -3.5 0
       </g>
      </g>
      <g id="text_15">
-      <text style="fill: #888888; font: 10px 'sans-serif'; text-anchor: end" x="50.6" y="57.367219" transform="rotate(-0, 50.6, 57.367219)">1.00</text>
+      <text style="fill: #888888; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="50.6" y="57.367219" transform="rotate(-0 50.6 57.367219)">1.00</text>
      </g>
     </g>
    </g>
@@ -431,7 +431,7 @@ L 395.869091 180.654523
 M 395.869091 180.654523 
 L 398.487273 174.528 
 L 398.487273 174.528 
-" clip-path="url(#pf505eaf84c)" style="fill: none; stroke: #1f77b4; stroke-width: 1.5; stroke-linecap: square"/>
+" clip-path="url(#p9ce2eeedc2)" style="fill: none; stroke: #1f77b4; stroke-width: 1.5; stroke-linecap: square"/>
    </g>
    <g id="patch_3">
     <path d="M 57.6 307.584 
@@ -456,7 +456,7 @@ L 414.72 41.472
   </g>
  </g>
  <defs>
-  <clipPath id="pf505eaf84c">
+  <clipPath id="p9ce2eeedc2">
    <rect x="57.6" y="41.472" width="357.12" height="266.112"/>
   </clipPath>
  </defs>
