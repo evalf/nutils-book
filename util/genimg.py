@@ -29,6 +29,7 @@ for section in re.findall('[(](tutorial.*)[.]md[)]', open('src/SUMMARY.md').read
             index += 1
             imgpath = f'src/{section}-fig{index}.svg'
             images.append(imgpath)
+            print('GENERATING', imgpath)
             with open(imgpath, 'wb') as f:
                 f.write(data)
         matplotlib.pyplot.close('all')

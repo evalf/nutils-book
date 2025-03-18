@@ -26,7 +26,7 @@ elements is formed using `nutils.mesh.rectilinear`:
 
 ```python
 nelems = 10
-topo, geom = mesh.rectilinear([
+topo, geom = rectilinear([
     numpy.linspace(0, 1, nelems+1), numpy.linspace(0, 1, nelems+1)])
 ```
 
@@ -36,7 +36,7 @@ dimension.  Alternatively you can create a unit square mesh using
 the element type:
 
 ```python
-topo, geom = mesh.unitsquare(nelems, 'square')
+topo, geom = unitsquare(nelems, 'square')
 ```
 
 The above two statements generate exactly the same topology and geometry.  Try
@@ -52,8 +52,8 @@ argument `lhs`.
 ns = Namespace()
 ns.x = geom
 ns.define_for('x', gradient='∇', normal='n', jacobians=('dV', 'dS'))
-ns.basis = topo.basis('std', degree=1)
-ns.u = function.dotarg('lhs', ns.basis)
+ns.u = topo.field('u', btype='std', degree=1)
+ns.v = topo.field('v', btype='std', degree=1)
 ```
 
 Note that the above statements are identical to those of the one-dimensional
@@ -62,28 +62,28 @@ example.
 The residual is implemented as
 
 ```python
-res = topo.integral('∇_i(basis_n) ∇_i(u) dV' @ ns, degree=2)
-res -= topo.boundary['right'].integral('basis_n cos(1) cosh(x_1) dS' @ ns, degree=2)
+res = topo.integral('∇_k(v) ∇_k(u) dV' @ ns, degree=2)
+res -= topo.boundary['right'].integral('v cos(1) cosh(x_1) dS' @ ns, degree=2)
 ```
 
 The Dirichlet boundary conditions are rewritten as a least squares problem and
-solved for `lhs`, yielding the constraints vector `cons`:
+solved for `u`, yielding the constraints vector `cons`:
 
 ```python
 sqr = topo.boundary['left'].integral('u^2 dS' @ ns, degree=2)
 sqr += topo.boundary['top'].integral('(u - cosh(1) sin(x_0))^2 dS' @ ns, degree=2)
-cons = solver.optimize('lhs', sqr, droptol=1e-15)
+cons = System(sqr, trial='u').solve_constraints(droptol=1e-15)
 # optimize > solve > solving 21 dof system to machine precision using arnoldi solver
 # optimize > solve > solver returned with residual 3e-17±2e-15
 # optimize > constrained 21/121 dofs
 # optimize > optimum value 4.32e-10±1e-9
 ```
 
-To solve the problem `res=0` for `lhs` subject to `lhs=cons` excluding
-the `nan` values, we can use `nutils.solver.solve_linear`:
+To solve the problem `res=0` for `u` subject to `cons['u']` excluding
+the `nan` values, we use the system's `solve` method:
 
 ```python
-lhs = solver.solve_linear('lhs', res, constrain=cons)
+args = System(res, trial='u', test='v').solve(constrain=cons)
 # solve > solving 100 dof system to machine precision using arnoldi solver
 # solve > solver returned with residual 2e-15±2e-15
 ```
@@ -92,18 +92,7 @@ Finally, we plot the solution.  We create a `nutils.sample.Sample` object from
 `topo` and evaluate the geometry and the solution:
 
 ```python
-bezier = topo.sample('bezier', 9)
-x, u = bezier.eval(['x_i', 'u'] @ ns, lhs=lhs)
-```
-
-We use `plt.tripcolor` to plot the sampled `x` and `u`:
-
-```python
-plt.tripcolor(x[:,0], x[:,1], bezier.tri, u, shading='gouraud', rasterized=True)
-plt.colorbar()
-plt.gca().set_aspect('equal')
-plt.xlabel('x_0')
-plt.ylabel('x_1')
+myplot(topo, ns.x, ns.u, args)
 ```
 ![output](tutorial-laplace2d-fig1.svg)
 

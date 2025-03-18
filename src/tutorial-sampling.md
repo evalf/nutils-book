@@ -34,7 +34,7 @@ points.  To reorder this into a sequence of lines in 1D, a triangulation in 2D
 or in general a sequence of simplices, use the `Sample.tri` attribute:
 
 ```python
-x.take(bezier.tri, 0)
+x[bezier.tri]
 # array([[0.  , 0.25],
 #        [0.25, 0.5 ],
 #        [0.5 , 0.75],
@@ -50,35 +50,24 @@ specified by keyword arguments to `Sample.eval()`. For example, to evaluate
 `nutils.solver.solve_linear` above, write
 
 ```python
-u = bezier.eval('u' @ ns, lhs=lhs)
+u = bezier.eval('u' @ ns, arguments=args)
 u
 # array([0.  , 0.25, 0.25, 0.5 , 0.5 , 0.75, 0.75, 1.  ])±1e-15
 ```
 
-We can now plot the sampled geometry `x` and solution `u` using `matplotlib`_,
+We can now plot the sampled geometry `x` and solution `u` using `matplotlib`,
 plotting each line in `Sample.tri` with a different color:
 
 ```python
-plt.plot(x.take(bezier.tri.T, 0), u.take(bezier.tri.T, 0))
+pyplot.plot(x[bezier.tri.T], u[bezier.tri.T])
 ```
 ![output](tutorial-sampling-fig1.svg)
 
-Recall that we have imported `matplotlib.pyplot` as `plt` above.  The
-`plt.plot()` function takes an array of x-values and and array of y-values,
-both with the first axis representing vertices and the second representing
-separate lines, hence the transpose of `bezier.tri`.
+The `pyplot.plot()` function takes an array of x-values and and array of
+y-values, both with the first axis representing vertices and the second
+representing separate lines, hence the transpose of `bezier.tri`.
 
-The `plt.plot()` function also supports plotting lines with discontinuities,
-which are represented by `nan` values.  We can use this to plot the solution as
-a single, but possibly discontinuous line. The function `numpy.insert` can be
-used to prepare a suitable array.  An example:
-
-```python
-nanjoin = lambda array, tri: numpy.insert(array.take(tri.flat, 0).astype(float),
-    slice(tri.shape[1], tri.size, tri.shape[1]), numpy.nan, axis=0)
-nanjoin(x, bezier.tri)
-# array([0.  , 0.25,  nan, 0.25, 0.5 ,  nan, 0.5 , 0.75,  nan, 0.75, 1.  ])±1e-15
-plt.plot(nanjoin(x, bezier.tri), nanjoin(u, bezier.tri))
-```
-
-Note the difference in colors between the last two plots.
+In our `myplot` utility function we call `nutils.export.triplot` to create a
+single line plot out of the many segments, aided by its own `tri` argument for
+element connectivity. It further generalizes to 2D (and 3D), as we will see in
+the following section.

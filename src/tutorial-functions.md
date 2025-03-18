@@ -29,14 +29,14 @@ element of the geometry `geom` you can write `geom[0]` and to select the first
 two basis functions you can write
 
 ```python
-plot_line(basis[:2])
+myplot(topo, geom, basis[:2])
 ```
 ![output](tutorial-functions-fig1.svg)
 
 The usual unary and binary operators are available:
 
 ```python
-plot_line(geom[0]*(1-geom[0])/2)
+myplot(topo, geom, geom[0]*(1-geom[0])/2)
 ```
 ![output](tutorial-functions-fig2.svg)
 
@@ -44,7 +44,7 @@ Several trigonometric functions are defined in the `nutils.function` module.
 An example with a sine function:
 
 ```python
-plot_line(numpy.sin(2*geom[0]*numpy.pi))
+myplot(topo, geom, numpy.sin(2*geom[0]*numpy.pi))
 ```
 ![output](tutorial-functions-fig3.svg)
 
@@ -52,7 +52,7 @@ The dot product is available via the '@' operator. To contract the basis with an
 arbitrary coefficient vector:
 
 ```python
-plot_line(basis @ [1,2,0,5,4])
+myplot(topo, geom, basis @ [1,2,0,5,4])
 ```
 ![output](tutorial-functions-fig4.svg)
 
@@ -63,15 +63,46 @@ coefficients for which this function solves the Laplace problem.
 
 ## Arguments
 
-A discrete model is often written in terms of an unknown, or a vector of
-unknowns.  In Nutils this translates to a function argument,
-`nutils.function.Argument`. Usually an argument is used in an inner product
-with a basis. For this purpose there exists the `nutils.function.field`
-function. For example, the [discrete
-solution](tutorial-theory.md#discrete-solution) can be written as
+A discrete model is often written in terms of (vectors of) unknowns. In Nutils,
+unknowns are represented by functions of type `nutils.function.Argument`, which
+have a known shape but undefined contents. Every argument has a name to
+identify it, which cannot be reused for different arguments in the same
+expression.
 
+The [discrete solution](tutorial-theory.md#discrete-solution) can now be
+written as an inner product with a basis, with the vector of unknowns
+$\hat{u}_n$ represented by the argument `'u'`:
 ```python
-ns.u = function.field('lhs', ns.basis)
+from nutils.function import Argument
+u = basis @ Argument('u', basis.shape)
 ```
 
-with the argument identified by `'lhs'` the vector of unknowns $\hat{u}_n$.
+Since it is slightly tedious to create an argument that has a matching shape to
+an existing basis, the function module provides a convenience function that
+does the work for you.
+```python
+from nutils.function import field
+u = field('u', basis)
+```
+
+Moreover, as it is rarely necessary to manipulate a basis directly, the
+topology object adds a layer of convenience that creates the basis, contracts
+it with an argument, and returns only the result. This is the form that we will
+most often encounter:
+```python
+u = topo.field('u', btype='spline', degree=1)
+```
+
+If a function depends on one or more arguments, then their values must be
+specified at evaluation time. However we cannot demonstrate that yet for the
+discrete solution defined here as it still requires a specification of the
+relevant topological points. This will be the subject of
+[integrals](tutorial-integrals.md).
+
+What we can do is take derivatives with respect to arguments. The derivative
+appends the argument shape to that of the original function. Here we take the
+derivative of u, the function, with respect to 'u', the argument, to
+effectively extract the basis:
+```python
+basis = u.derivative('u')
+```

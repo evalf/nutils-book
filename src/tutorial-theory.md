@@ -3,12 +3,12 @@
 We will introduce fundamental Nutils concepts based on the 1D homogeneous
 Laplace problem,
 
-$$ u''(x) = 0 $$
+$$ u''(x) = 2 $$
 
-with boundary conditions $u(0) = 0$ and $u'(1) = 1$. Even though
-the solution is trivially found to be $u(x) = x$, the example serves to
-introduce many key concepts in the Nutils paradigm, concepts that can then be
-applied to solve a wide class of physics problems.
+with boundary conditions $u(0) = 1$ and $u'(1) = 1$. Even though the solution
+to this problem is easily found to be $u(x) = 1 - x + x^2$, the example serves
+to introduce many key concepts in the Nutils paradigm, concepts that can then
+be applied to solve a wide class of physics problems.
 
 ## Weak Form
 
@@ -22,7 +22,7 @@ space such that any $u ∈ H_0(Ω)$ satisfies $u = 0$ in $
 ∈ H_0(Ω)$ for which $R(v, u) = 0$ for all test functions $v ∈
 H_0(Ω)$, with $R$ the bilinear functional
 
-$$ R(v, u) := ∫_Ω \frac{∂v}{∂x_i} \frac{∂u}{∂x_i} \ dV - ∫_{Γ_\text{right}} v \ dS. $$
+$$ R(v, u) := ∫_Ω \left( \frac{∂v}{∂x_i} \frac{∂u}{∂x_i} + 2 v \right) dV - ∫_{Γ_\text{right}} v \ dS. $$
 
 ## Discrete Solution
 
