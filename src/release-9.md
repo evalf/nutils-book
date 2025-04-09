@@ -3,7 +3,7 @@
 Nutils 9 was released on April 9, 2025.
 
 - [Download](https://github.com/evalf/nutils/archive/refs/tags/v9.0.zip) (zip)
-- [API Reference](http://docs.nutils.org/en/v9.0/)
+- [API Reference](https://docs.nutils.org/en/v9.0/)
 
 
 ## What's new?
