@@ -4,7 +4,7 @@ Nutils 6 was released on April 29th, 2020 and saw three point releases for
 fixes and backports. The most recent and final version in this series is Nutils
 6.3, released on November 18th, 2021.
 - [Download](https://github.com/evalf/nutils/archive/refs/tags/v6.3.zip) (zip)
-- [API Reference](http://docs.nutils.org/en/v6.3/)
+- [API Reference](https://docs.nutils.org/en/v6.3/)
 
 ## What's New?
 

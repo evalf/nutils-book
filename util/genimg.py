@@ -18,24 +18,23 @@ matplotlib.rcParams['ytick.color'] = '#888' # gray
 images = []
 ns = {}
 for section in re.findall('[(](tutorial.*)[.]md[)]', open('src/SUMMARY.md').read()):
-    print('ENTERING', section)
     index = 0
-    for snippet in re.findall('^```python$(.*?)^```$', open(f'src/{section}.md').read(), re.MULTILINE | re.DOTALL):
-        try:
-            exec(snippet, ns, ns)
-        except Exception as e:
-            print('ERROR:', e)
-        else:
-            for fignum in matplotlib.pyplot.get_fignums():
-                with io.BytesIO() as f:
-                    matplotlib.pyplot.figure(fignum).savefig(f, metadata=dict(Creator=None, Date=None, Format=None, Type=None))
-                    data = f.getvalue()
-                index += 1
-                imgpath = f'src/{section}-fig{index}.svg'
-                images.append(imgpath)
-                with open(imgpath, 'wb') as f:
-                    f.write(data)
-            matplotlib.pyplot.close('all')
+    for snippet in re.findall('^```python\n(.*?)^```$', open(f'src/{section}.md').read(), re.MULTILINE | re.DOTALL):
+        print(f'In {section}.md:')
+        for i, line in enumerate(snippet.splitlines(), start=1):
+            print(f'{i:2d}. {line}')
+        exec(snippet, ns, ns)
+        for fignum in matplotlib.pyplot.get_fignums():
+            with io.BytesIO() as f:
+                matplotlib.pyplot.figure(fignum).savefig(f, metadata=dict(Creator=None, Date=None, Format=None, Type=None))
+                data = f.getvalue()
+            index += 1
+            imgpath = f'src/{section}-fig{index}.svg'
+            images.append(imgpath)
+            print('--> generating', imgpath)
+            with open(imgpath, 'wb') as f:
+                f.write(data)
+        matplotlib.pyplot.close('all')
 
 print(f'created {len(images)} images:')
 print('\n'.join(images))

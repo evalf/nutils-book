@@ -18,6 +18,10 @@ Articles that [cite Nutils](science-citing.md) will be picked up automatically.
   by A. Cherezov, A. Vasiliev and H, Ferroukhi,
   October 2024.
 
+- [On the use of elliptic PDEs for the parameterisation of planar multipatch domains](https://doi.org/10.1007/s00366-024-01997-x)
+  by J. Hinz and A. Buffa,
+  May 2024.
+
 - [Echocardiogram-based ventricular isogeometric cardiac analysis using multi-patch fitted NURBS](https://doi.org/10.1016/j.cma.2024.116958)
   by R. Willems, L. Verberne, O. van der Sluis and C.V. Verhoosel,
   May 2024.
@@ -29,6 +33,10 @@ Articles that [cite Nutils](science-citing.md) will be picked up automatically.
 - [A Shape Derivative Approach to Domain Simplification](https://doi.org/10.1016/j.cad.2023.103636)
   by J. Hinz, O. Chanon, A. Arrigoni and A. Buffa,
   February 2024.
+
+- [Using Bayesian optimization for warpage compensation in injection molding](https://doi.org/10.1002/mawe.202300157)
+  by S. Tillmann, M. Behr and S. Elgeti,
+  January 2024.
 
 ## 2023
 

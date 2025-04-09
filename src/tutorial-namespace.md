@@ -15,39 +15,29 @@ ns = Namespace()
 ```
 
 New entries are added to a `nutils.expression_v2.Namespace` by assigning an
-`nutils.function.Array` to an attribute.  For example, to assign the geometry
-`geom` to `ns.x`, simply type
+`nutils.function.Array` to an attribute.  For example, the geometry
+`geom` is assigned to `ns.x` via
 
 ```python
 ns.x = geom
 ```
 
-You can now use `ns.x` where you would use `geom`. Usually you want to add the
-gradient, normal and jacobian of this geometry to the namespace as well. This
-can be done using `nutils.expression_v2.Namespace.define_for` naming the
-geometry (as present in the namespace) and names for the gradient, normal, and
-the jacobian as keyword arguments:
-
+You can now use `ns.x` where you would use `geom`. Usually you will want to add
+the gradient, normal and jacobian of this geometry to the namespace as well.
+This can be done by calling `nutils.expression_v2.Namespace.define_for` with
+the name of the geometry (as present in the namespace) followed by the names or
+symbols you choose to represent the desired features as optional keyword
+arguments:
 ```python
 ns.define_for('x', gradient='∇', normal='n', jacobians=('dV', 'dS'))
 ```
 
-Note that any keyword argument is optional.
-
-To assign a linear basis to `ns.basis`, type
-
+The discrete solution is again added through a simple assignment:
 ```python
-ns.basis = topo.basis('spline', degree=1)
+ns.u = topo.field('u', btype='spline', degree=1)
 ```
 
-and to assign the discrete solution as the inner product of this basis with
-argument `'lhs'`, type
-
-```python
-ns.u = function.dotarg('lhs', ns.basis)
-```
-
-You can also assign numbers and `numpy.ndarray` objects:
+It is also possible to assign numbers and `numpy.ndarray` objects:
 
 ```python
 ns.a = 1
@@ -85,7 +75,7 @@ The resulting `ns.e` is an ordinary `nutils.function.Array`.  Note that the
 variables used in the expression should exist in the namespace, not just as a
 local variable:
 
-```python
+```python (skip)
 localvar = 1
 ns.f = '2 localvar'
 # Traceback (most recent call last):

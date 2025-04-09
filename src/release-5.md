@@ -4,7 +4,7 @@ Nutils 5 was released on April 3rd, 2020 and saw two point releases for fixes
 and backports. The most recent and final version in this series is Nutils 5.2,
 released on June 11th, 2019.
 - [Download](https://github.com/evalf/nutils/archive/refs/tags/v5.2.zip) (zip)
-- [API Reference](http://docs.nutils.org/en/v5.2/)
+- [API Reference](https://docs.nutils.org/en/v5.2/)
 
 ## What's New?
 

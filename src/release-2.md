@@ -2,7 +2,7 @@
 
 Nutils 2 was released on February 18th, 2016 and saw no point releases.
 - [Download](https://github.com/evalf/nutils/archive/refs/tags/v2.0.zip) (zip)
-- [API Reference](http://docs.nutils.org/en/v2.0/)
+- [API Reference](https://docs.nutils.org/en/v2.0/)
 
 ## What's New?
 

@@ -21,6 +21,7 @@
     - [Sampling](tutorial-sampling.md)
     - [2D Laplace Problem](tutorial-laplace2d.md)
 - [Release History](release.md)
+    - [Nutils 9 Jook-Sing](release-9.md)
     - [Nutils 8 Idiyappam](release-8.md)
     - [Nutils 7 Hiyamugi](release-7.md)
     - [Nutils 6 Garak-Guksu](release-6.md)

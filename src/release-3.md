@@ -4,7 +4,7 @@ Nutils 3 was released on August 22nd, 2018 and saw one point release for fixes
 and backports. The most recent and final version in this series is Nutils 3.1,
 released on February 5th, 2018.
 - [Download](https://github.com/evalf/nutils/archive/refs/tags/v3.1.zip) (zip)
-- [API Reference](http://docs.nutils.org/en/v3.1/)
+- [API Reference](https://docs.nutils.org/en/v3.1/)
 
 ## What's New?
 

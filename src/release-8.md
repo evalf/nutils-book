@@ -4,7 +4,7 @@ Nutils 8 was released on July 28th, 2023 and saw eight point releases for fixes
 and backports. The most recent and final version in this series is Nutils 8.8,
 released on July 9th, 2024.
 - [Download](https://github.com/evalf/nutils/archive/refs/tags/v8.8.zip) (zip)
-- [API Reference](http://docs.nutils.org/en/v8.8/)
+- [API Reference](https://docs.nutils.org/en/v8.8/)
 
 ## What's New?
 

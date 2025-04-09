@@ -4,7 +4,7 @@ Nutils 7 was released on January 1st, 2022 and saw three point releases for
 fixes and backports. The most recent and final version in this series is Nutils
 7.3, released on June 20th, 2023.
 - [Download](https://github.com/evalf/nutils/archive/refs/tags/v7.3.zip) (zip)
-- [API Reference](http://docs.nutils.org/en/v7.3/)
+- [API Reference](https://docs.nutils.org/en/v7.3/)
 
 ## What's New?
 
