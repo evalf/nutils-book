@@ -107,10 +107,11 @@ data directly into the CSR structure, resulting in substantial memory savings.
 
 ### Other notable changes
 
-The turek example is added as an implementation of the [Turek Hron
+The [turek example](https://examples.nutils.org/official-turek/) is added as an
+implementation of the [Turek Hron
 benchmark](https://doi.org/10.1007/3-540-34596-5_15), able to reproduce all of
-the 9 distinct benchmark cases as well as freely defined variants thereof.
-The new benchmark section in this book contains convergence results of the code,
+the 9 distinct benchmark cases as well as freely defined variants thereof. The
+new benchmark section in this book contains convergence results of the code,
 compared against the reference results of Turek and Hron.
 
 The `mesh.gmsh` function has been enhanced to accept .geo paths in addition to
