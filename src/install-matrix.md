@@ -23,7 +23,7 @@ The Scipy matrix backend becomes available when [Scipy](https://www.scipy.org/)
 is installed, either using the platform's package manager or via pip:
 
 ```sh
-python -m pip install --user scipy
+python -m pip install scipy
 ```
 
 In addition to a sparse direct solver, the Scipy backend provides many
@@ -58,4 +58,12 @@ sudo tee /etc/ld.so.conf.d/mkl.conf << EOF > /dev/null
 /opt/intel/mkl/lib/intel64/
 EOF
 sudo ldconfig -v
+```
+
+If it is impossible to install MKL system wide, for instance because of lacking
+administrative powers, then an easy way of installing it with user privileges
+is to use pip. Nutils will automatically load the libraries from pip's default
+installation path.
+```sh
+python -m pip install mkl
 ```

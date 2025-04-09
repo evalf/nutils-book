@@ -29,9 +29,8 @@ location ~ ^/~(.+?)(/.*)?$ {
 ```
 
 Finally, the terminal output can be made to show the http address rather than
-the local uri by adding the following line to the `~/.nutilsrc` configuration
-file:
+the local uri by setting the `NUTILS_OUTROOTURI` environment variable, e.g.:
 
 ```
-outrooturi = 'https://mydomain.tld/~myusername/'
+export NUTILS_OUTROOTURI="http://mydomain.tld/~myname/"
 ```
