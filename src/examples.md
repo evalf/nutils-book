@@ -7,7 +7,7 @@ concise examples demonstrating different areas of physics and varying
 computational techniques.
 
 The examples are taken from both the Nutils
-[repository](https://github.com/evalf/nutils/tree/master/examples) and user
+[repository](https://github.com/evalf/nutils/tree/main/examples) and user
 contributed repositories, and are tested regularly to confirm validity against
 different versions of Nutils.
 
@@ -20,7 +20,7 @@ test Nutils against, and, in doing so, they may even help themselves by
 preventing future Nutils version from accidentally breaking their code.
 
 Examples should resemble the [official
-examples](https://github.com/evalf/nutils/tree/master/examples) from the Nutils
+examples](https://github.com/evalf/nutils/tree/main/examples) from the Nutils
 repository. In particular, they:
 - use `cli.run` to call main function;
 - have reasonable default parameters corresponding to a simulation that is relevant but not overly expensive;

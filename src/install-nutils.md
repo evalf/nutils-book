@@ -20,7 +20,7 @@ To install the most recent development version we use Github's ability to
 generate zip balls:
 
 ```sh
-python -m pip install https://github.com/evalf/nutils/archive/refs/heads/master.zip
+python -m pip install https://github.com/evalf/nutils/archive/refs/heads/main.zip
 ```
 
 Alternatively, if the [Git](https://git-scm.com/) version control system is
@@ -28,7 +28,7 @@ installed, we can use pip's ability to interact with it directly to install the
 same version as follows:
 
 ```sh
-python -m pip install git+https://github.com/evalf/nutils.git@master
+python -m pip install git+https://github.com/evalf/nutils.git@main
 ```
 
 This notation has the advantage that even a specific tag or commit (rather than

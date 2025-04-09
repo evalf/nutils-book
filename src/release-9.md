@@ -153,7 +153,7 @@ The following constructs have been deprecated and are marked for removal in Nuti
 ## Complete overview of changes
 
 This release cycle was the first where we assigned version numbers to every
-commit in the master branch. Since the version is logged at the top (when using
+commit in the main branch. Since the version is logged at the top (when using
 `cli.run`), this should always make it unambiguously clear what version of the
 code was used to generate past results, even if this was part of the
 development branch.
