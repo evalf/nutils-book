@@ -39,7 +39,7 @@ def main(nelems: int = 10, etype: str = 'square'):
     udofs = solver.optimize('udofs',
         domain.integral((g @ g / 2 - u) * J, degree=1), constrain=cons)
     bezier = domain.sample('bezier', 3)
-    x, u = bezier.eval([x, u], udofs=udofs)
+    x, u = bezier.eval([x, u], arguments=dict(udofs=udofs))
     export.triplot('u.png', x, u, tri=bezier.tri, hull=bezier.hull)
 
 cli.run(main)
@@ -61,12 +61,16 @@ python poisson.py
 This should produce the following output:
 
 ```
-nutils v7.0
-optimize > constrained 40/121 dofs
-optimize > optimum value 0.00e+00
-optimize > solve > solving 81 dof system to machine precision using arnoldi solver
-optimize > solve > solver returned with residual 6e-17
-optimize > optimum value -1.75e-02
+NUTILS 9.0 "Jook-Sing"
+arguments > nelems=10
+arguments > etype=square
+solve_constraints > optimizing for argument udofs (121) with drop tolerance 1e-12
+solve_constraints > residual norm: 0.0e+00
+solve_constraints > optimal value: 0.0e+00
+solve_constraints > constrained 40 degrees of freedom of udofs
+solve > optimizing for argument udofs (121) using direct method
+solve > residual norm: 6.5e-17
+solve > optimal value: -1.7e-02
 u.png
 log written to file:///home/myusername/public_html/poisson.py/log.html
 ```
