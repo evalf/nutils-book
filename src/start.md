@@ -10,10 +10,11 @@ syntax, and explore the [examples](examples.md) for inspiration.
 
 With Python version 3.7 or newer installed, Nutils and Matplotlib can be
 installed via the [Python Package Index](https://pypi.org/project/nutils/)
-using the pip package installer. In a terminal window:
+using the pip package installer.
+In a terminal window with an active [Python virtual environment](https://docs.python.org/3/library/venv.html):
 
 ```sh
-python -m pip install --user nutils matplotlib
+python -m pip install nutils matplotlib
 ```
 
 Note that Nutils depends on Numpy, Treelog and Stringly, which means that these
