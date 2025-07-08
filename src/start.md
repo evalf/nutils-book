@@ -39,7 +39,7 @@ def main(nelems: int = 10, etype: str = 'square'):
     udofs = solver.optimize('udofs',
         domain.integral((g @ g / 2 - u) * J, degree=1), constrain=cons)
     bezier = domain.sample('bezier', 3)
-    x, u = bezier.eval([x, u], udofs=udofs)
+    x, u = bezier.eval([x, u], arguments=dict(udofs=udofs))
     export.triplot('u.png', x, u, tri=bezier.tri, hull=bezier.hull)
 
 cli.run(main)
