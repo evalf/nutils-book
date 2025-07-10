@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Functions - The Nutils Book</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">The Nutils Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/evalf/nutils-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<p>A <em>function</em> in Nutils is a mapping from a topology onto an n-dimensional
+array, and comes in the form of a functions: <code>nutils.function.Array</code> object. It
+is not to be confused with Python's own function objects, which operate on the
+space of general Python objects. Two examples of Nutils functions have already
+made the scene: the geometry <code>geom</code>, as returned by <code>nutils.mesh.rectilinear</code>,
+and the bases generated by <code>Topology.basis()</code>. Though seemingly different,
+these two constructs are members of the same class and in fact fully
+interoperable.</p>
+<p>The <code>nutils.function.Array</code> functions behave very much like <code>numpy.ndarray</code>
+objects: the functions have a <code>nutils.function.Array.shape</code>,
+<code>nutils.function.Array.ndim</code> and a <code>nutils.function.Array.dtype</code>:</p>
+<pre><code class="language-python">geom.shape
+# (1,)
+basis.shape
+# (5,)
+geom.ndim
+# 1
+geom.dtype
+# &lt;class 'float'&gt;
+</code></pre>
+<p>The functions support numpy-style indexing.  For example, to get the first
+element of the geometry <code>geom</code> you can write <code>geom[0]</code> and to select the first
+two basis functions you can write</p>
+<pre><code class="language-python">myplot(topo, geom, basis[:2])
+</code></pre>
+<p><img src="tutorial-functions-fig1.svg" alt="output" /></p>
+<p>The usual unary and binary operators are available:</p>
+<pre><code class="language-python">myplot(topo, geom, geom[0]*(1-geom[0])/2)
+</code></pre>
+<p><img src="tutorial-functions-fig2.svg" alt="output" /></p>
+<p>Several trigonometric functions are defined in the <code>nutils.function</code> module.
+An example with a sine function:</p>
+<pre><code class="language-python">myplot(topo, geom, numpy.sin(2*geom[0]*numpy.pi))
+</code></pre>
+<p><img src="tutorial-functions-fig3.svg" alt="output" /></p>
+<p>The dot product is available via the '@' operator. To contract the basis with an
+arbitrary coefficient vector:</p>
+<pre><code class="language-python">myplot(topo, geom, basis @ [1,2,0,5,4])
+</code></pre>
+<p><img src="tutorial-functions-fig4.svg" alt="output" /></p>
+<p>Recalling the definition of the <a href="tutorial-theory.html#discrete-solution">discrete
+solution</a>, the above is precisely the way
+to evaluate the resulting function. What remains now is to establish the
+coefficients for which this function solves the Laplace problem.</p>
+<h2 id="arguments"><a class="header" href="#arguments">Arguments</a></h2>
+<p>A discrete model is often written in terms of (vectors of) unknowns. In Nutils,
+unknowns are represented by functions of type <code>nutils.function.Argument</code>, which
+have a known shape but undefined contents. Every argument has a name to
+identify it, which cannot be reused for different arguments in the same
+expression.</p>
+<p>The <a href="tutorial-theory.html#discrete-solution">discrete solution</a> can now be
+written as an inner product with a basis, with the vector of unknowns
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">u</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> represented by the argument <code>'u'</code>:</p>
+<pre><code class="language-python">from nutils.function import Argument
+u = basis @ Argument('u', basis.shape)
+</code></pre>
+<p>Since it is slightly tedious to create an argument that has a matching shape to
+an existing basis, the function module provides a convenience function that
+does the work for you.</p>
+<pre><code class="language-python">from nutils.function import field
+u = field('u', basis)
+</code></pre>
+<p>Moreover, as it is rarely necessary to manipulate a basis directly, the
+topology object adds a layer of convenience that creates the basis, contracts
+it with an argument, and returns only the result. This is the form that we will
+most often encounter:</p>
+<pre><code class="language-python">u = topo.field('u', btype='spline', degree=1)
+</code></pre>
+<p>If a function depends on one or more arguments, then their values must be
+specified at evaluation time. However we cannot demonstrate that yet for the
+discrete solution defined here as it still requires a specification of the
+relevant topological points. This will be the subject of
+<a href="tutorial-integrals.html">integrals</a>.</p>
+<p>What we can do is take derivatives with respect to arguments. The derivative
+appends the argument shape to that of the original function. Here we take the
+derivative of u, the function, with respect to 'u', the argument, to
+effectively extract the basis:</p>
+<pre><code class="language-python">basis = u.derivative('u')
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="tutorial-bases.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="tutorial-namespace.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="tutorial-bases.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="tutorial-namespace.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

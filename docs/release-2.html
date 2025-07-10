@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Nutils 2 Chuka Men - The Nutils Book</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">The Nutils Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/evalf/nutils-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="nutils-2-chuka-men"><a class="header" href="#nutils-2-chuka-men">Nutils 2 Chuka Men</a></h1>
+<p>Nutils 2 was released on February 18th, 2016 and saw no point releases.</p>
+<ul>
+<li><a href="https://github.com/evalf/nutils/archive/refs/tags/v2.0.zip">Download</a> (zip)</li>
+<li><a href="https://docs.nutils.org/en/v2.0/">API Reference</a></li>
+</ul>
+<h2 id="whats-new"><a class="header" href="#whats-new">What's New?</a></h2>
+<p>These are the main additions and changes since <a href="release-1.html">Nutils 1 Bakmi</a>.</p>
+<h3 id="changed-jump-sign"><a class="header" href="#changed-jump-sign">Changed: jump sign</a></h3>
+<p>The jump operator has been changed according to the following definition:
+<code>jump(f) = opposite(f) - f</code>. In words, it represents the value of the argument
+from the side that the normal is pointing toward, minus the value from the side
+that the normal is pointing away from. Compared to the old definition this
+means the sign is flipped.</p>
+<h3 id="changed-topology-objects"><a class="header" href="#changed-topology-objects">Changed: Topology objects</a></h3>
+<p>The Topology base class no longer takes a list of elements in its constructor.
+Instead, the <code>__iter__</code> method should be implemented by the derived class, as
+well as <code>__len__</code> for the number of elements, and getelem(index) to access
+individual elements. The 'elements' attribute is deprecated.</p>
+<p>The <code>nutils.topology.StructuredTopology</code> object no longer accepts an array with
+elements. Instead, an 'axes' argument is provided with information that allows
+it to generate elements in the fly. The 'structure' attribute is deprecated. A
+newly added <code>shape</code> tuple is now a documented attribute.</p>
+<h3 id="changed-properties-dumpdir-outdir-outrootdir"><a class="header" href="#changed-properties-dumpdir-outdir-outrootdir">Changed: properties dumpdir, outdir, outrootdir</a></h3>
+<p>Two global properties have been renamed as follows:</p>
+<ul>
+<li>dumpdir → outdir</li>
+<li>outdir → outrootdir</li>
+</ul>
+<p>The <code>outrootdir</code> defaults to ~/public_html and can be redefined from the
+command line or in the .nutilsrc configuration file. The outdir defaults to the
+current directory and is redefined by <code>util.run</code>, nesting the name/date/time
+subdirectory sequence under <code>outrootdir</code>.</p>
+<h3 id="changed-sum-axis-argument"><a class="header" href="#changed-sum-axis-argument">Changed: sum axis argument</a></h3>
+<p>The behaviour of <code>nutils.function.sum</code> is inconsistent with that of the Numpy
+counterparts. In case no axes argument is specified, Numpy sums over all axes,
+whereas Nutils sums over the last axis. To undo this mistake and transition to
+Numpy's behaviour, calling sum without an axes argument is deprecated and will
+be forbidden in Nutils 3.0. In Nutils 4.0 it will be reintroduced with the
+corrected meaning.</p>
+<h3 id="changed-strict-dimension-equality-in-functionouter"><a class="header" href="#changed-strict-dimension-equality-in-functionouter">Changed: strict dimension equality in function.outer</a></h3>
+<p>The <code>nutils.function.outer</code> method allows arguments of different dimension by
+left-padding the smallest prior to multiplication. There is no clear reason for
+this generality and it hinders error checking. Therefore in future in
+<code>function.outer(a, b)</code>, <code>a.ndim</code> must equal <code>b.ndim</code>. In a brief transition
+period non-equality emits a warning.</p>
+<h3 id="changed-evaluable-base-class"><a class="header" href="#changed-evaluable-base-class">Changed: Evaluable base class</a></h3>
+<p>Relevant only for custom <code>nutils.function.Evaluable</code> objects, the <code>evalf</code>
+method changes from constructor argument to instance/class method:</p>
+<pre><code class="language-python">class MyEval( function.Evaluable):
+  def __init__(self, ...):
+    function.Evaluable(args=[...], shape=...)
+  def evalf( self, ...):
+    ...
+</code></pre>
+<p>Moreover, the <code>args</code> argument may only contain Evaluable objects. Static
+information is to be passed through <code>self</code>.</p>
+<h3 id="removed-_numeric-c-extension"><a class="header" href="#removed-_numeric-c-extension">Removed: _numeric C-extension</a></h3>
+<p>At this point Nutils is pure Python. It is no longer necessary to run make to
+compile extension modules. The numeric.py module remains unchanged.</p>
+<h3 id="periodic-boundary-groups"><a class="header" href="#periodic-boundary-groups">Periodic boundary groups</a></h3>
+<p>Touching elements of periodic domains are no longer part of the <code>boundary</code>
+topology. It is still available as boundary of an appropriate non-periodic
+subtopology:</p>
+<pre><code class="language-python">domain.boundary['left'] # no longer valid
+domain[:,:1].boundary['left'] # still valid
+</code></pre>
+<h3 id="new-module-transform"><a class="header" href="#new-module-transform">New module: transform</a></h3>
+<p>The new <code>nutils.transform</code> module provides objects and operations relating to
+affine coordinate transformations.</p>
+<h3 id="traceback-explorer-disabled-by-default"><a class="header" href="#traceback-explorer-disabled-by-default">Traceback explorer disabled by default</a></h3>
+<p>The new command line switch <code>--tbexplore</code> activates the traceback explorer on
+program failure. To change the default behavior add <code>tbexplore=True</code> to your
+.nutilsrc file.</p>
+<h3 id="rich-output"><a class="header" href="#rich-output">Rich output</a></h3>
+<p>The new command line switch <code>--richoutput</code> activates color and unicode output.
+To change the default behavior add <code>richoutput=True</code> to your .nutilsrc file.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="release-3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="release-1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="release-3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="release-1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Publications - The Nutils Book</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">The Nutils Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/evalf/nutils-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="publications"><a class="header" href="#publications">Publications</a></h1>
+<p>Below is a selection of mostly peer reviewed articles that use Nutils for
+numerical experiments. In case your Nutils powered research is not listed here,
+please send the DOI to <a href="mailto:info@nutils.org">info@nutils.org</a> or submit a
+<a href="https://github.com/evalf/nutils-book">pull request</a> with the new entry.
+Articles that <a href="science-citing.html">cite Nutils</a> will be picked up automatically.</p>
+<h2 id="2025"><a class="header" href="#2025">2025</a></h2>
+<ul>
+<li><a href="https://doi.org/10.1016/j.anucene.2024.110837">Application of Backward Differential Formula and Anderson’s method for multigroup diffusion transient equation</a>
+by A. Cherezov, A. Vasiliev and H. Ferroukhi,
+January 2025.</li>
+</ul>
+<h2 id="2024"><a class="header" href="#2024">2024</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1016/j.anucene.2024.110575">Low precision preconditioning for solving neutron diffusion eigenvalue problem by finite element method</a>
+by A. Cherezov, A. Vasiliev and H, Ferroukhi,
+October 2024.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1007/s00366-024-01997-x">On the use of elliptic PDEs for the parameterisation of planar multipatch domains</a>
+by J. Hinz and A. Buffa,
+May 2024.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2024.116958">Echocardiogram-based ventricular isogeometric cardiac analysis using multi-patch fitted NURBS</a>
+by R. Willems, L. Verberne, O. van der Sluis and C.V. Verhoosel,
+May 2024.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1063/5.0199294">A light Darwin implementation of Maxwell’s equations to quantify resistive, inductive, and capacitive couplings in windings</a>
+by S. Pourkeivannour, J.S.B. van Zwieten, K. Iwai and M. Curti,
+March 2024.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cad.2023.103636">A Shape Derivative Approach to Domain Simplification</a>
+by J. Hinz, O. Chanon, A. Arrigoni and A. Buffa,
+February 2024.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1002/mawe.202300157">Using Bayesian optimization for warpage compensation in injection molding</a>
+by S. Tillmann, M. Behr and S. Elgeti,
+January 2024.</p>
+</li>
+</ul>
+<h2 id="2023"><a class="header" href="#2023">2023</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2023.116354">Finite element and isogeometric stabilized methods for the advection-diffusion-reaction equation</a>
+by K. Key, M.R.A. Abdelmalik, S. Elgeti, T.J.R. Hughes and F.A. Baidoo,
+December 2023.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1007/978-3-031-36942-1_14">Scan-Based Immersed Isogeometric Flow Analysis</a>
+by C.V. Verhoosel, E.H. van Brummelen, S.C. Divi and F. de Prenter,
+November 2023.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1063/5.0152690">Current progress toward isogeometric modeling of the heart biophysics</a>
+by M. Torre, S. Morganti, F.S. Pasqualini and A. Reali,
+November 2023.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.3390/j6040041">A Comparative Study of Finite Element Method and Hybrid Finite Element Method–Spectral Element Method Approaches Applied to Medium-Frequency Transformers with Foil Windings</a>
+by S. Pourkeivannour, J.S.B. van Zwieten, L.A.J. Friedrich, M. Curti and E.A. Lomonova,
+November 2023.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1017/jfm.2023.611">Numerical investigation of the sharp-interface limit of the Navier–Stokes–Cahn–Hilliard equations</a>
+by T.H.B. Demont, S.K.F. Stoter and E.H. van Brummelen,
+September 2023.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1007/s00466-023-02376-x">An isogeometric analysis framework for ventricular cardiac mechanics</a>
+by R. Willems, K.L.P.M. Janssens, P.H.M. Bovendeerd, C.V. Verhoosel and O. van der Sluis,
+August 2023.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1109/TMAG.2023.3269904">Optimal Coil Design for Coreless Linear Motors Based on the Extended Stream-Function Method</a>
+by B.J.A. Kuijpers, J.W. Jansen and E.A. Lomonova,
+July 2023.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2023.116074">Critical time-step size analysis and mass scaling by ghost-penalty for immersogeometric explicit dynamics</a>
+by S.K.F. Stoter, S.C. Divi, E.H. van Brummelen, M.G. Larson, F. de Prenter and C.V. Verhoosel,
+July 2023.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2023.116055">Isogeometric mixed collocation of nearly-incompressible electromechanics in finite deformations for cardiac muscle simulations</a>
+by M. Torre, S. Morganti, A. Nitti, M.D. de Tullio, F.S. Pasqualini and Alessandro Reali,
+June 2023.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1103/PhysRevLett.130.228201">Reversal of Solvent Migration in Poroelastic Folds</a>
+by M.M. Flapper, A. Pandey, M.H. Essink, E.H. van Brummelen, S. Karpitschka and J.H. Snoeijer,
+June 2023.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2022.115856">Immersed isogeometric analysis based on a hybrid collocation/finite cell method</a>
+by M. Torre, S. Morganti, F.S. Pasqualini, A. Düster and A. Reali,
+February 2023.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.jmps.2022.105082">A thermodynamically consistent J-integral formulation for fluid-driven fracture propagation in poroelastic continua</a>
+by E.A. Bergkamp, C.V. Verhoosel, J.J.C. Remmers and D.M.J. Smeulders,
+January 2023.</p>
+</li>
+</ul>
+<h2 id="2022"><a class="header" href="#2022">2022</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1098/rspa.2022.0132">Soft wetting with (a)symmetric Shuttleworth effect</a>
+by C. Henkel, M.H. Essink, T. Hoang, G.J. van Zwieten, E.H. van Brummelen and U. Thiele,
+August 2022.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2022.115162">Entropy bounds for the space–time discontinuous Galerkin finite element moment method applied to the BGK–Boltzmann equation</a>
+by M.R.A. Abdelmalik, D.A.M. van der Woude and E.H.van Brummelen,
+August 2022.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1093/jom/ufac015">Residual-based error estimation and adaptivity for stabilized immersed isogeometric analysis using truncated hierarchical B-splines</a>
+by S.C. Divi, P.H. van Zuijlen, T. Hoang, F. de Prenter, F. Auricchio, A. Reali, E.H. van Brummelen and C.V. Verhoosel,
+May 2022.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1002/nag.3365">Inverting elastic dislocations using the Weakly-enforced Slip Method</a>
+by G.J. van Zwieten, E.H. van Brummelen and R.F. Hanssen,
+April 2022.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.jcp.2022.110972">A dimensionally-reduced fracture flow model for poroelastic media with fluid entry resistance and fluid slip</a>
+by E.A. Bergkamp, C.V. Verhoosel, J.J.C. Remmers and D.M.J. Smeulders,
+April 2022.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2022.114782">An efficient isogeometric collocation approach to cardiac electrophysiology</a>
+by M. Torre, S. Morganti, A. Nitti, M.D. de Tullio, F.S. Pasqualini and A. Reali,
+April 2022.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.12688/openreseurope.14445.1">preCICE v2: A sustainable and user-friendly coupling library</a>
+by G. Chourdakis, K. Davis, B. Rodenberg, M. Schulte, F. Simonis, B. Uekermann, G. Abrams, H. Bungartz, L.C. Yau, I. Desai, K. Eder, R. Hertrich, F. Lindner, A. Rusch, D. Sashko, D. Schneider, A. Totounferoush, D. Volland, P. Vollmer and O.Z. Koseomur,
+April 2022.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2022.114648">Topology-preserving scan-based immersed isogeometric analysis</a>
+by S.C. Divi, C.V. Verhoosel, F. Auricchio, A. Reali and E.H. van Brummelen,
+March 2022.</p>
+</li>
+</ul>
+<h2 id="2021"><a class="header" href="#2021">2021</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1109/TMAG.2021.3059903">Anisotropic Congruency-Based Vector Hysteresis Model Applied to Non-Oriented Laminated Steels</a>
+by R. Zeinali, D. Krop and E. Lomonova,
+June 2021.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2021.113685">The role of PDE-based parameterization techniques in gradient-based IGA shape optimization applications</a>
+by J. Hinz, A. Jaeschke, M. Möller and C. Vuik,
+May 2021.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.3390/mca26010023">Finite Element Analysis of Laminar Heat Transfer within an Axial-Flux Permanent Magnet Machine</a>
+by R. Willems, L.A.J. Friedrich and C.V. Verhoosel,
+February 2021.</p>
+<p><a href="https://doi.org/10.3390/j4010002">Time- and Frequency-Domain Steady-State Solutions of Nonlinear Motional Eddy Currents Problems</a>
+by L.A.J. Friedrich,
+January 2021.</p>
+</li>
+</ul>
+<h2 id="2020"><a class="header" href="#2020">2020</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1016/j.camwa.2020.03.026">Error-estimate-based adaptive integration for immersed isogeometric analysis</a>
+by S.C. Divi, C.V. Verhoosel, F. Auricchio, A. Reali and E.H. van Brummelen,
+December 2020.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1103/PhysRevX.10.031067">Singular Nature of the Elastocapillary Ridge</a>
+by A. Pandey, B. Andreotti, S. Karpitschka, G.J. van Zwieten, E.H. van Brummelen and J.H. Snoeijer,
+September 2020.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1002/nme.6443">Quasi-Newton waveform iteration for partitioned surface-coupled multiphysics applications</a>
+by B. Rüth, B. Uekermann, M. Mehl, P. Birken, A. Monge and H.J. Bungartz,
+June 2020.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1007/s10596-019-09931-7">A staggered finite element procedure for the coupled Stokes-Biot system with fluid entry resistance</a>
+by E.A. Bergkamp, C.V. Verhoosel, J.J.C. Remmers and D.M.J Smeulders,
+May 2020.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1007/978-3-030-30705-9_8">Entropy Stable Discontinuous Galerkin Finite Element Moment Methods for Compressible Fluid Dynamics</a>
+by M.R.A. Abdelmalik and E.H. van Brummelen,
+February 2020.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1088/1742-6596/1669/1/012032">Splipy: B-Spline and NURBS Modelling in Python</a>
+by K.A. Johannessen and E. Fonn,
+January 2020.</p>
+</li>
+</ul>
+<h2 id="2019"><a class="header" href="#2019">2019</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1007/s00466-019-01796-y">Multigrid solvers for immersed finite element methods and immersed isogeometric analysis</a>
+by F. de Prenter, C.V. Verhoosel, E.H. van Brummelen, J.A. Evans, C. Messe, J. Benzaken and K. Maute,
+November 2019.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.48550/arXiv.1910.12588">Isogeometric Analysis of the Gray-Scott Reaction-Diffusion Equations for Pattern Formation on Evolving Surfaces and Applications to Human Gyrification</a>
+by J. Hinz, J. van Zwieten, M. Möller and F. Vermolen,
+October 2019.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2019.01.030">Preconditioning immersed isogeometric finite element methods with application to flow problems</a>
+by F. de Prenter, C.V. Verhoosel and E.H. van Brummelen,
+May 2019.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.3390/en12071271">Finite-Volume High-Fidelity Simulation Combined with Finite-Element-Based Reduced-Order Modeling of Incompressible Flow Problems</a>
+by E. Fonn, T. Kvamsdal and A. Rasheed,
+April 2019.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2018.10.015">Skeleton-stabilized immersogeometric analysis for incompressible viscous flow problems</a>
+by T. Hoang, C.V. Verhoosel, C. Qin, F. Auricchio, A. Reali and E.H. van Brummelen,
+February 2019.</p>
+</li>
+</ul>
+<h2 id="2018"><a class="header" href="#2018">2018</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1016/j.cagd.2018.03.023">Elliptic grid generation techniques in the framework of isogeometric analysis applications</a>
+by J. Hinz, M. Möller and C. Vuik,
+October 2018.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1088/1757-899X/425/1/012030">Spline-Based Parameterization Techniques for Twin-Screw Machine Geometries</a>
+by J. Hinz, M. Möller and C. Vuik,
+September 2018.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2018.03.034">Skeleton-stabilized IsoGeometric Analysis: High-regularity interior-penalty methods for incompressible viscous flow problems</a>
+by T. Hoang, C.V. Verhoosel, F. Auricchio, E.H. van Brummelen and A. Reali,
+August 2018.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1007/s00226-018-1038-6">Fracture behaviour of historic and new oak wood</a>
+by R.A. Luimes, A.S.J. Suiker, C.V. Verhoosel and H.L. Schellen,
+July 2018.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.camwa.2018.03.032">A note on the stability parameter in Nitsche's method for unfitted boundary value problems</a>
+by F. de Prenter, C. Lehrenfeld and A. Massing,
+April 2018.</p>
+</li>
+</ul>
+<h2 id="2017"><a class="header" href="#2017">2017</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2017.06.024">Error estimation and adaptive moment hierarchies for goal-oriented approximations of the Boltzmann equation</a>
+by M.R.A. Abdelmalik and E.H. van Brummelen,
+October 2017.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1007/s10596-017-9667-7">An MSSS-preconditioned matrix equation approach for the time-harmonic elastic wave equation at multiple frequencies</a>
+by M. Baumann, R. Astudillo, Y. Qiu, E.Y.M. Ang, M.B. van Gijzen and R.E. Plessix,
+June 2017.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2016.07.027">Mixed Isogeometric Finite Cell Methods for the Stokes problem</a>
+by T. Hoang, C.V. Verhoosel, F. Auricchio, E.H. van Brummelen and A. Reali,
+April 2017.</p>
+</li>
+</ul>
+<h2 id="2016"><a class="header" href="#2016">2016</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1007/978-3-319-40827-9_35">Elasto-capillarity Simulations based on the Navier-Stokes-Cahn-Hilliard Equations</a>
+by E.H. Van Brummelen, M. Shokrpour-Roudbari and G.J. Van Zwieten,
+October 2016.</p>
+</li>
+<li>
+<p><a href="https://doi.org/10.1016/j.finel.2015.12.005">A fracture-controlled path-following technique for phase-field modeling of brittle fracture</a>
+by N. Singh, C.V. Verhoosel, R. de Borst and E.H. van Brummelen,
+June 2016.</p>
+</li>
+<li>
+<p><a href="http://dx.doi.org/10.1016/j.cma.2016.07.006">Condition number analysis and preconditioning of the finite cell method</a>
+by F. de Prenter, C.V. Verhoosel, G.J. van Zwieten and E.H. van Brummelen,
+January 2016.</p>
+</li>
+</ul>
+<h2 id="2015"><a class="header" href="#2015">2015</a></h2>
+<ul>
+<li>
+<p><a href="https://doi.org/10.1016/j.cma.2014.11.019">Duality-based two-level error estimation for time-dependent PDEs: Application to linear and nonlinear parabolic equations</a>
+by G. Şimşek, X. Wu, K.G. van der Zee and E.H. van Brummelen,
+May 2015.</p>
+</li>
+<li>
+<p><a href="http://doi.org/10.1002/nme.4952">On the use of adaptive refinement in isogeometric digitalimage correlation</a>
+S.M. Kleinendorst, J.P.M. Hoefnagels, C.V. Verhoosel and A.P. Ruybalid,
+May 2015.</p>
+</li>
+<li>
+<p><a href="http://dx.doi.org/10.1016/j.cma.2014.07.009">Image-based goal-oriented adaptive isogeometric analysis with application to the micro-mechanical modeling of trabecular bone</a>
+by C.V. Verhoosel, G.J. van Zwietena, B. van Rietbergen and R. de Borst,
+February 2015.</p>
+</li>
+<li>
+<p><a href="http://dx.doi.org/10.1016/j.cma.2014.09.037">A finite-element/boundary-element method for three-dimensional, large-displacement fluid–structure-interaction</a>
+by T.M. van Opstal, E.H. van Brummelen and G.J. van Zwieten,
+February 2015.</p>
+</li>
+</ul>
+<h2 id="2014"><a class="header" href="#2014">2014</a></h2>
+<ul>
+<li><a href="http://dx.doi.org/10.1016/j.cma.2013.12.004">Discontinuities without discontinuity: The Weakly-enforced Slip Method</a>
+by G.J. van Zwietena, E.H. van Brummelen, K.G. van der Zee, M.A. Gutiérrez and R.F. Hanssen,
+April 2014.</li>
+</ul>
+<h2 id="2013"><a class="header" href="#2013">2013</a></h2>
+<ul>
+<li>
+<p><a href="http://dx.doi.org/10.1002/cnm.2597">Stabilized second-order convex splitting schemes for Cahn–Hilliard models with application to diffuse-interface tumor-growth models</a>
+by X. Wu, G.J. van Zwieten and K.G. van der Zee,
+September 2013.</p>
+</li>
+<li>
+<p><a href="http://www.tue.nl/fileadmin/content/faculteiten/wtb/Onderzoek/Onderzoeksgroepen/multiscale-engineering-fluid-dynamics/wu_vanZwieten_vanderZee_2013.pdf">Adaptive Time-Stepping for Cahn-Hilliard-type Equations with Application to Diffuse-Interface Tumor-growth Models (pdf)</a>
+by X. Wu, G.J. Van Zwieten, K.G. van der Zee and G. Simsek,
+March 2013.</p>
+</li>
+<li>
+<p><a href="http://dx.doi.org/10.1007/978-94-007-6143-8_5">Shape-Newton Method for Isogeometric Discretizations of Free-Boundary Problems</a>
+by K.G. van der Zee, G.J. van Zwieten, C.V. Verhoosel and E.H. van Brummelen,
+February 2013.</p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="science.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="science-citing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="science.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="science-citing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

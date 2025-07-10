@@ -1,0 +1,413 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Nutils 9 Jook-Sing - The Nutils Book</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">The Nutils Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/evalf/nutils-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="nutils-9-jook-sing"><a class="header" href="#nutils-9-jook-sing">Nutils 9 Jook-Sing</a></h1>
+<p>Nutils 9 was released on April 9, 2025 and saw one point release for fixes and
+backports. The most recent version in this series is Nutils 9.1, released on
+July 7th, 2025.</p>
+<ul>
+<li><a href="https://github.com/evalf/nutils/archive/refs/tags/v9.1.zip">Download</a> (zip)</li>
+<li><a href="https://docs.nutils.org/en/v9.1/">API Reference</a></li>
+</ul>
+<h2 id="whats-new"><a class="header" href="#whats-new">What's new?</a></h2>
+<p>These are the main additions and changes since Nutils 8 Idiyappam.</p>
+<h3 id="system"><a class="header" href="#system">System</a></h3>
+<p>The most prominent new feature of Nutils 9 is arguably the redesign of the
+solver module, which now offers the <code>System</code> object as the main entry point for
+all linear and nonlinear problems. A typical use looks like this:</p>
+<pre><code class="language-python">&gt;&gt;&gt; sys = solver.System(residual, trial='u', test='v')
+&gt;&gt;&gt; args = sys.solve(constrain=cons)
+</code></pre>
+<p>Nonlinear problems require a <code>tol</code> argument, and will switch to a vanilla
+newton process by default. Different solution methods, such as line search
+newton (solver.LinesearchNewton) or steepest descent minimization
+(solver.Minimize) can be specified via the <code>method</code> argument. Newly added
+solution methods are solver.ReuseNewton and solver.Arnoldi.</p>
+<p>Presently, the main advantage of the new interface is in repeated solves, as
+the system object retains information such as the matrix sparsity pattern that
+is expensive to recompute. In future, systems will be enhanced to recognize and
+exploit features such as one way coupling of matrix blocks. The old functions
+such as <code>solve_linear</code> and <code>newton</code> will be deprecated in the next development
+cycle for removal in Nutils 11. All examples are updated to use <code>System</code>
+directly to encourage new projects to switch over to the new API.</p>
+<h3 id="field"><a class="header" href="#field">Field</a></h3>
+<p>Nutils 8 initiated the transition from operating on basis functions and vector
+valued residuals, to fields, i.e. bases contracted with arguments, and scalar
+valued residuals. Nutils 9 further promotes this by providing a new <code>field</code>
+method that makes formation of the basis an entirely internal affair. In the
+following example, <code>u1</code>, <code>u2</code> and <code>u3</code> are identical:</p>
+<pre><code class="language-python">&gt;&gt;&gt; u1 = topo.field('u', btype='spline', degree=2)
+&gt;&gt;&gt; basis = topo.basis('spline', degree=2)
+&gt;&gt;&gt; u2 = basis @ function.Argument('u', basis.shape)
+&gt;&gt;&gt; u3 = function.field('u', basis)
+</code></pre>
+<p>In the majority of cases that direct acces to the basis is not required, the
+first construction is recommended. The second shows what really happens,
+discounting some subtle differences in the case of tensorial topologies. The
+third form showcases the new function <code>function.field</code>, which was renamed from
+<code>function.dotarg</code> for naming consistency. Like its predecessor, this function
+can also be used to create constant fields by not providing a basis argument.</p>
+<h3 id="factor"><a class="header" href="#factor">Factor</a></h3>
+<p>Another standout new feature is <code>function.factor</code>, which offers to speed up
+calculations by precomputing assembly loops. Its use is limited to functions
+that are already bound to all spaces, e.g. by integration, and that are
+polynomial in all their arguments. Building on the previous example, a typical
+use would be to factor the system argument:</p>
+<pre><code class="language-python">&gt;&gt;&gt; sys = solver.System(function.factor(residual), trial='u', test='v')
+</code></pre>
+<p>Here, residual must by polynomial in 'u' and 'v'. Factor then evaluates the
+polynomial coefficients as sparse arrays. Finally, when System evaluates the
+resulting function, this amounts to nothing more than sparse tensor
+contractions, which can be very fast. Note, however, a high polynomial degree
+results in high-dimensional coefficients which, while sparse, may still require
+a lot of memory and many operations to perform the required contractions. As
+such, the benefits of factor should be assessed on a case by case basis.</p>
+<p>Two examples that benefit greatly from the factor treatment are cylinderflow
+and cahnhilliard. In another useful application of factor, these scripts have
+greatly sped up post processing by factoring sampled results. The <code>Sample.bind</code>
+method used for this purpose is also new in Nutils 9.</p>
+<h3 id="jit-compiler"><a class="header" href="#jit-compiler">JIT compiler</a></h3>
+<p>Under the hood, a major change in the evaluable module is the way that
+functions are evaluated. Where evaluations formerly consisted of a (dynamically
+created) sequence of function calls, Nutils 9 generates and compiles a
+dedicated Python function. The direct result of this change is a reduction in
+function calls, which lowers the total overhead and shifts the balance of total
+time spent to the actual numerical operations.</p>
+<p>The compiled function furthermore distinguishes between (intermediate) results
+that depend on input arguments, and those that stay constant between
+evaluations. The latter are stored as part of the function object and reused
+when the function is evaluated for the second time. Noting that part of the
+non-changing structures in a function is the entire sparsity pattern, it should
+be clear that these are significant savings. This also another reason why the
+switch to the new solver API is vital, as the System object holds on to the
+compiled function along with its cached data.</p>
+<p>Thirdly, the new approach allows for in-place modifications. Formerly, a sparse
+matrix was assembled by concatenating element contributions before
+deduplicating and converting it to CSR format. The new approach adds element
+data directly into the CSR structure, resulting in substantial memory savings.</p>
+<h3 id="other-notable-changes"><a class="header" href="#other-notable-changes">Other notable changes</a></h3>
+<p>The <a href="https://examples.nutils.org/official-turek/">turek example</a> is added as an
+implementation of the <a href="https://doi.org/10.1007/3-540-34596-5_15">Turek Hron
+benchmark</a>, able to reproduce all of
+the 9 distinct benchmark cases as well as freely defined variants thereof. The
+new benchmark section in this book contains convergence results of the code,
+compared against the reference results of Turek and Hron.</p>
+<p>The <code>mesh.gmsh</code> function has been enhanced to accept .geo paths in addition to
+the already supported '.msh' files. The new mode requires gmsh to be installed
+in the executable path, and uses it to generate the corresponding msh file on
+the fly. The new <code>numbers</code> parameter provides for parameterized input, in the
+form of a dictionary with variables for the geo file. The new turek example
+showcases this new ability.</p>
+<p>Support for SI units has been extended to the Numpy operations <code>real</code>, <code>imag</code>,
+<code>conjugate</code>, <code>reshape</code>, <code>linalg.norm</code> and <code>interp</code>. The new <code>Sample.bind</code>
+method is unit aware. Finally, <code>Topology.locate</code> now accepts dimensional
+quantities provided that the geometry function and points array have matching
+dimension, as well as the <code>tol</code> argument if provided.</p>
+<p>On the dependencies front, Nutils now requires Python 3.9 or higher, as these
+are the only versions still activaly maintained. Likewise, the minimum Numpy
+version has been bumped to 1.21. On the other end of the spectrum, support is
+added for Numpy series 2. The bottombar and psutil modules are removed as
+dependencies, but will still be used by cli.run and cli.choose if they are
+detected to be installed. Finally, the MKL matrix will be automatically
+recognized with the mkl module is user-installed via pip.</p>
+<h3 id="deprecations"><a class="header" href="#deprecations">Deprecations</a></h3>
+<p>The following constructs have been deprecated and are marked for removal in Nutils 10:</p>
+<ul>
+<li>matrix.assemble (replaced by matrix.assemble_coo and matrix.assemble_csr)</li>
+<li>function.dotarg (replaced by function.field)</li>
+<li>function.outer (replaced by the equivalent numpy operations)</li>
+<li>sample.Sample callable (replaced by Sample.bind)</li>
+<li>function.integral (replaced by Sample.integral)</li>
+<li>function.sample (replaced by Sample.bind)</li>
+<li>function.rootcoords (no replacement)</li>
+<li>sample.Sample.integrate_sparse (replaced by function.eval + function.as_coo + sample.Sample.integral)</li>
+<li>sample.Sample.eval_sparse (replaced by function.eval + function.as_coo + sample.Sample.bind)</li>
+<li>providing arguments as keywords (replaced by the 'arguments' parameter)</li>
+<li>the newly introduced 'legacy' argument in functon.Array.eval and sample.Sample.integrate</li>
+</ul>
+<h2 id="complete-overview-of-changes"><a class="header" href="#complete-overview-of-changes">Complete overview of changes</a></h2>
+<p>This release cycle was the first where we assigned version numbers to every
+commit in the main branch. Since the version is logged at the top (when using
+<code>cli.run</code>), this should always make it unambiguously clear what version of the
+code was used to generate past results, even if this was part of the
+development branch.</p>
+<p>In the following overview, the versions indicate when a certain feature was
+introduced, changed, fixed or deprecaded, and, if applicable, when it was
+backported into the stable branch.</p>
+<ul>
+<li><em>New in v9a1:</em> support diagonal offset in numpy.trace</li>
+<li><em>Changed in v9a1:</em> minimum Python version 3.8</li>
+<li><em>Changed in v9a2, v8.1:</em> log version in cli.run, cli.choose</li>
+<li><em>Changed in v9a3:</em> update Docker base image to Debian Bookworm</li>
+<li><em>Fixed in v9a3, v8.3:</em> missing points in trimmed topology with skip_missing=True</li>
+<li><em>New in v9a4, v8.3:</em> support numpy.{real,imag,conjugate} on Quantities</li>
+<li><em>New in v9a4, v8.3:</em> support complex arguments in function.linearize</li>
+<li><em>Fixed in v9a6, v8.4:</em> basis of SimplexTopology</li>
+<li><em>Fixed in v9a6, v8.4:</em> empty boundary of SimplexTopology, triggered when all boundaries are periodic</li>
+<li><em>Fixed in v9a7, v8.4:</em> picklability of sliced function array</li>
+<li><em>New in v9a10:</em> support boolean operators for function arrays</li>
+<li><em>Changed in v9a12:</em> internal: removed remove evaluable.Points,NPoints,Weights</li>
+<li><em>Fixed in v9a14, v8.5:</em> pyproject version constraints</li>
+<li><em>New in v9a15, v8.6:</em> support locate for tensorial topologies</li>
+<li><em>New in v9a17:</em> make svg graphs interactive</li>
+<li><em>Changed in v9a19:</em> more efficient geometry function for equidistant rectilinear mesh</li>
+<li><em>Fixed in v9a20, v8.7:</em> logging of parameters without type annotation</li>
+<li><em>Fixed in v9a21:</em> SI handling of special binary methods</li>
+<li><em>Changed in v9a24:</em> fill nested subgraphs with distinct bg colors</li>
+<li><em>Changed in v9a25:</em> add evaluable.Singular</li>
+<li><em>Fixed in v9a25, v8.7:</em> simplification of Equals involving Range</li>
+<li><em>Fixed in v9a28, v8.7:</em> multipatch interfaces</li>
+<li><em>New in v9a30:</em> add evaluable.compile: a Python code generator</li>
+<li><em>Changed in v9a33:</em> evaluable.Array now derived from types.DataClass</li>
+<li><em>Fixed in v9a35:</em> parsegmsh in presence of multiple periodicity</li>
+<li><em>Fixed in v9a35:</em> parsegmsh's handling of empty physical groups</li>
+<li><em>Fixed in v9a36:</em> getpoints for empty mosaic elements</li>
+<li><em>Fixed in v9a36:</em> 'not watertight' trimming issues</li>
+<li><em>Changed in v9a37:</em> reduce unnecessary evaluations for shape checks during function formation</li>
+<li><em>New in v9a37:</em> matrix.assemble_coo, .assemble_csr, .assemble_block_csr</li>
+<li><em>New in v9a37:</em> evaluable.eval_coo, .unique, .as_csr</li>
+<li><em>New in v9a37:</em> solver.System</li>
+<li><em>Fixed in v9a37:</em> deprecated tol argument in scipy&gt;=1.12</li>
+<li><em>Deprecated in v9a37:</em> matrix.assemble (replaced by matrix.assemble_coo, matrix.assemble_csr)</li>
+<li><em>Changed in v9a39:</em> disable graphviz node background if ncalls == 0</li>
+<li><em>New in v9a39:</em> function.factor</li>
+<li><em>Fixed in v9a40:</em> disallow truncation in types.arraydata</li>
+<li><em>Fixed in v9a41:</em> Gramm-Schmidt breakdown in Arnoldi solver</li>
+<li><em>New in v9a42:</em> support Numpy 2</li>
+<li><em>Changed in v9a44:</em> remove psutil and bottombar dependencies</li>
+<li><em>Changed in v9a45:</em> automatically load mkl from pip user install</li>
+<li><em>Changed in v9a46:</em> add argument checks to mesh.simplex</li>
+<li><em>Changed in v9a46:</em> extend mesh.gmsh with ability to convert geo files</li>
+<li><em>New in v9a47:</em> allow iterator argument in function.vectorize</li>
+<li><em>New in v9a47:</em> topology.field method</li>
+<li><em>Changed in v9a47:</em> rename dotarg to field</li>
+<li><em>Deprecated in v9a47:</em> dotarg (replaced by field)</li>
+<li><em>New in v9a49:</em> Turek benchmark example</li>
+<li><em>New in v9a50:</em> SI support for reshape, linalg.norm, interp</li>
+<li><em>New in v9a51:</em> vorticity plot in drivencavity example</li>
+<li><em>Changed in v9a52:</em> support SI arguments in Topology.locate</li>
+<li><em>Changed in v9a52:</em> support locating points on manifolds</li>
+<li><em>New in v9a53:</em> sample.bind</li>
+<li><em>Changed in v9a53:</em> minimum Python version 3.9</li>
+<li><em>Changed in v9a53:</em> minimum Numpy version 1.21</li>
+<li><em>Changed in v9a53:</em> extend numpy.interp to functions with points</li>
+<li><em>Fixed in v9a53:</em> zipping tensorial samples</li>
+<li><em>Fixed in v9a53:</em> graph of evaluables with nested loops</li>
+<li><em>Deprecated in v9a53:</em> function.outer</li>
+<li><em>Deprecated in v9a53:</em> sample callable (replaced by .bind)</li>
+<li><em>Deprecated in v9a53:</em> function.integral, function.sample</li>
+<li><em>Changed in v9a54:</em> simplify TransformLinear, TransformBasis if constant</li>
+<li><em>Changed in v9a54:</em> simplify evaluable.Transform* with masked source</li>
+<li><em>Deprecated in v9a54:</em> function.rootcoords</li>
+<li><em>Changed in v9a55</em>: sparse deduplication during evaluation</li>
+<li><em>New in v9a55</em>: sparse modifiers function.as_coo and function.as_csr</li>
+<li><em>New in v9a58</em>: ability to select spaces in function.grad, Namespace.define_for</li>
+<li><em>Deprecated in v9a60</em>: sample.integrate_sparse, Sample.eval_sparse</li>
+<li><em>Deprecated in v9a60</em>: arguments via keywords (replaced by the 'arguments' parameter)</li>
+<li><em>New in v9a60</em>: legacy parameter in Array.eval, Sample.integrate</li>
+<li><em>New in v9a62</em>: solver methods ReuseNewton and Arnoldi</li>
+<li><em>New in v9a63</em>: support nested integrals over the same space</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="release.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="release-8.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="release.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="release-8.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

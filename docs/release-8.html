@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Nutils 8 Idiyappam - The Nutils Book</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">The Nutils Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/evalf/nutils-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="nutils-8-idiyappam"><a class="header" href="#nutils-8-idiyappam">Nutils 8 Idiyappam</a></h1>
+<p>Nutils 8 was released on July 28th, 2023 and saw eight point releases for fixes
+and backports. The most recent and final version in this series is Nutils 8.8,
+released on July 9th, 2024.</p>
+<ul>
+<li><a href="https://github.com/evalf/nutils/archive/refs/tags/v8.8.zip">Download</a> (zip)</li>
+<li><a href="https://docs.nutils.org/en/v8.3/">API Reference</a></li>
+</ul>
+<h2 id="whats-new"><a class="header" href="#whats-new">What's New?</a></h2>
+<p>These are the main additions and changes since <a href="release-7.html">Nutils 7
+Hiyamugi</a>.</p>
+<h3 id="new-si-module-for-physical-units"><a class="header" href="#new-si-module-for-physical-units">New: SI module for physical units</a></h3>
+<p>The SI module provides a framework for checking the dimensional consistency of
+a formulation at runtime, as well as tools to convert between different units
+for post processing. Extensive documentation can be found in the <a href="https://docs.nutils.org/en/v8.0/nutils/SI/#module-nutils.SI">SI
+module</a>. The
+framework can be seen in action in the <a href="https://examples.nutils.org/official-cahnhilliard/">cahnhilliard
+example</a>, with more
+examples to be converted in future.</p>
+<h3 id="new-support-for-einsum-and-other-numpy-operations"><a class="header" href="#new-support-for-einsum-and-other-numpy-operations">New: support for einsum and other Numpy operations</a></h3>
+<p>Support for Numpy operations on Nutils arrays has been extended to include:</p>
+<ul>
+<li><code>numpy.choose</code></li>
+<li><code>numpy.cross</code></li>
+<li><code>numpy.diagonal</code></li>
+<li><code>numpy.einsum</code></li>
+<li><code>numpy.interp</code> (array support limited to <code>x</code> argument)</li>
+<li><code>numpy.linalg.det</code></li>
+<li><code>numpy.linalg.eig</code></li>
+<li><code>numpy.linalg.eigh</code></li>
+<li><code>numpy.linalg.inv</code></li>
+<li><code>numpy.linalg.norm</code></li>
+<li><code>numpy.searchsorted</code> (array support limited to <code>v</code> argument)</li>
+</ul>
+<h3 id="new-test-fields-and-residual-functionals"><a class="header" href="#new-test-fields-and-residual-functionals">New: test fields and residual functionals</a></h3>
+<p>The <code>nutils.solver</code> methods have been generalized to accept scalar valued
+functionals, from which residual vectors are derived through differentiation.
+To this end, a trial/test function pair can be specified as a solve target
+separated by a colon, as in the following example:</p>
+<pre><code class="language-python">ns.add_field(('u', 'v'), topo.basis('std', degree=1))
+res = topo.integral('∇_i(u) ∇_i(v) dV' @ ns, degree=2)
+args = solver.newton('u:v', res).solve(1e-10)
+</code></pre>
+<p>Multiple fields can either comma-joined or provided as a tuple. Note that the
+colon automatically triggers a new-style dictionary return value, even in
+absence of a trialing comma as in the above example.</p>
+<h3 id="new-namespaceadd_field"><a class="header" href="#new-namespaceadd_field">New: Namespace.add_field</a></h3>
+<p>The namespace from the <code>nutils.expression_v2</code> module newly provides the
+<code>nutils.expression_v2.Namespace.add_field</code> method, as a convenient shorthand
+for creating fields with the same name as their arguments. That is:</p>
+<pre><code class="language-python">ns.add_field(('u', 'v'), topo.basis('std', degree=1), shape=(2,))
+</code></pre>
+<p>is equivalent to</p>
+<pre><code class="language-python">basis = topo.basis('std', degree=1)
+ns.u = function.dotarg('u', basis, shape=(2,))
+ns.v = function.dotarg('v', basis, shape=(2,))
+</code></pre>
+<h3 id="new-shorthand-notation-for-multiple-solver-targets"><a class="header" href="#new-shorthand-notation-for-multiple-solver-targets">New: shorthand notation for multiple solver targets</a></h3>
+<p>Multiple solver targets can now be specified as a comma-separated string, as a
+shorthand for the string tuple that will remain a valid argument. This means
+the following two invocations are equivalent:</p>
+<pre><code class="language-python">args = solver.newton(('u', 'p'), (ures, pres)).solve(1e-10)
+args = solver.newton('u,p', (ures, pres)).solve(1e-10)
+</code></pre>
+<p>To distinguish single-length tuples from the single argument legacy notation,
+the former requires a trailing comma. I.e., the following are NOT equivalent:</p>
+<pre><code class="language-python">args = solver.newton('u,', (ures,)).solve(1e-10)
+u = solver.newton('u', ures).solve(1e-10)
+</code></pre>
+<h3 id="new-nearest-neighbour-interpolation-in-sampleasfunction-samplebasis"><a class="header" href="#new-nearest-neighbour-interpolation-in-sampleasfunction-samplebasis">New: nearest-neighbour interpolation in sample.asfunction, sample.basis</a></h3>
+<p>The sample methods <code>asfunction</code> and <code>basis</code> have a new interpolation argument
+that take the string values "none" (default) or "nearest". The latter activates
+a new mode that allows evaluation of sampled data on other samples than the
+original by selecting the point that is closest to the target.</p>
+<h3 id="new-functionlinearize"><a class="header" href="#new-functionlinearize">New: function.linearize</a></h3>
+<p>Similar to <code>derivative</code>, the new function <code>linearize</code> takes the derivative of
+an array to one or more arguments, but with the derivative directions
+represented by arguments rather than array axes. This is particularly useful in
+situations where weak forms are made up of symmetric, energy like components,
+combined with terms that require dedicated test fields.</p>
+<h3 id="new-option-to-disable-newtons-line-search"><a class="header" href="#new-option-to-disable-newtons-line-search">New: option to disable Newton's line search</a></h3>
+<p>The <code>linesearch</code> argument of <code>solver.newton</code> can now receive the <code>None</code> value
+to indicate that line search is to be disabled. Additionally, the legacy
+arguments <code>searchrange</code> and <code>rebound</code> have been deprecated, and should be
+replaced by <code>linesearch=solver.NormBased(minscale=searchrange[0], acceptscale=searchrange[1], maxscale=rebound)</code>.</p>
+<h3 id="new-iteration-count-via-infoniter"><a class="header" href="#new-iteration-count-via-infoniter">New: iteration count via info.niter</a></h3>
+<p>The info struct returned by <code>solve_withinfo</code> newly contains the amount of
+iterations as the <code>niter</code> attribute:</p>
+<pre><code class="language-python">res, info = solver.newton('u:v', res).solve_withinfo(1e-10, maxiter=10)
+assert info.niter &lt;= 10
+</code></pre>
+<h3 id="improved-more-efficient-trimming"><a class="header" href="#improved-more-efficient-trimming">Improved: more efficient trimming</a></h3>
+<p>The trim routine (which is used for the Finite Cell Method) is rewritten for
+speed and to produce more efficient quadrature schemes. The changes relate to
+the subdivision at the deepest refinement level. While this step used to
+introduce auxiliary vertices at every dimension (lines, faces, volumes), the
+new implementation limits the introduction of vertices to the line segments
+only, resulting in a subdivision that consists of fewer simplices and
+consequently fewer quadrature points.</p>
+<h3 id="changed-solve-solve_withinfo-arguments"><a class="header" href="#changed-solve-solve_withinfo-arguments">Changed: solve, solve_withinfo arguments</a></h3>
+<p>Solver methods newton, minimize and pseudotime have their function signature
+slightly changed:</p>
+<ol>
+<li>The tol argument (used to define the stop criterion) has been made
+mandatory. As the default value used to be 0 - an unreacheable value in
+practice - the argument was effectively mandatory already, which this change
+formalizes.</li>
+<li>The maxiter argument was off by 1, leading maxiter=n to accept
+n+1 iterations. This mistake is now fixed, which may break applications that
+relied on the former erroneous behaviour.</li>
+</ol>
+<h3 id="fixed-locate-points-on-trimmed-topologies-with-the-skip_missing-flag-set"><a class="header" href="#fixed-locate-points-on-trimmed-topologies-with-the-skip_missing-flag-set">Fixed: locate points on trimmed topologies with the skip_missing flag set</a></h3>
+<p>The <code>locate</code> method has a <code>skip_missing</code> argument that instructs the method to
+silently drop points that can not be located on the topology. This setting was
+partially ignored by trimmed topologies which could lead to a <code>LocateError</code>
+despite the flag being set. This issue is now fixed.</p>
+<h3 id="removed-nutils-configuration-file"><a class="header" href="#removed-nutils-configuration-file">Removed: Nutils configuration file</a></h3>
+<p>Support for the Nutils configuration file (which used to be located in either
+~/.nutilsrc or ~/.config/nutils/config) has been removed. Instead, the
+following environment variables can be set to override the default Nutils
+settings:</p>
+<ul>
+<li>NUTILS_PDB  = yes|no</li>
+<li>NUTILS_GRACEFULEXIT = yes|no</li>
+<li>NUTILS_OUTROOTDIR = path/to/html/logs</li>
+<li>NUTILS_OUTROOTURI = uri/to/html/logs</li>
+<li>NUTILS_SCRIPTNAME = myapp</li>
+<li>NUTILS_OUTDIR = path/to/this/html/log</li>
+<li>NUTILS_OUTURI = uti/to/this/html/log</li>
+<li>NUTILS_RICHOUTPUT = yes|no</li>
+<li>NUTILS_VERBOSE = 1|2|3|4</li>
+<li>NUTILS_MATRIX = numpy|scipy|mkl|auto</li>
+<li>NUTILS_NPROCS = 1|2|...</li>
+<li>NUTILS_CACHE = yes|no</li>
+<li>NUTILS_CACHEDIR = path/to/cache</li>
+</ul>
+<h3 id="deprecated-function-methods-that-have-numpy-equivalents"><a class="header" href="#deprecated-function-methods-that-have-numpy-equivalents">Deprecated: function methods that have Numpy equivalents</a></h3>
+<p>The <code>nutils.function</code> methods that have direct equivalents in the <code>numpy</code>
+module (<code>function.sum</code>, <code>function.sqrt</code>, <code>function.sin</code>, etc) have been
+deprecated in favour of using Numpy's methods (<code>numpy.sum</code>, <code>numpy.sqrt</code>,
+<code>numpy.sin</code>, etc) and will be removed in the next release. Ultimately, only
+methods that relate to the variable nature of function arrays and therefore
+have no Numpy equivalent, such as <code>function.grad</code> and <code>function.normal</code>, will
+remain in the function module.</p>
+<p>Be aware that some functions were not 100% equivalent to their Numpy
+counterpart. For instance, <code>function.max</code> is the equivalent to <code>numpy.maximum</code>,
+as the deprecation message helpfully points out. More problematically,
+<code>function.dot</code> behaves very differently from both <code>numpy.dot</code> and
+<code>numpy.matmul</code>. Porting the code over to equivalent instructions will therefore
+require some attention.</p>
+<h3 id="deprecated-arraydot-for-ndim--1"><a class="header" href="#deprecated-arraydot-for-ndim--1">Deprecated: Array.dot for ndim != 1</a></h3>
+<p>The <code>nutils.function.Array.dot</code> method is incompatible with Numpy's equivalent
+method for arrays of ndim != 1, or when axes are specified (which Numpy does
+not allow). Aiming for 100% compatibility, the next release cycle will remove
+the axis argument and temporarily forbid arguments of ndim != 1. The release
+cycle thereafter will re-enable arguments with ndim != 1, with logic equal to
+Numpy's method. In the meantime, the advice is to rely on <code>numpy.dot</code>,
+<code>numpy.matmul</code> or the <code>@</code> operator instead.</p>
+<h3 id="deprecated-arraysum-for-ndim--1-without-axis-argument"><a class="header" href="#deprecated-arraysum-for-ndim--1-without-axis-argument">Deprecated: Array.sum for ndim &gt; 1 without axis argument</a></h3>
+<p>The <code>nutils.function.Array.sum</code> method by default operates on the last axis.
+This is different from Numpy's behavour, which by default sums all axes. Aiming
+for 100% compatibility, the next release cycle will make the axis argument
+mandatory for any array of ndim &gt; 1. The release cycle thereafter will
+reintroduce the default value to match Numpy's. To prepare for this, relying on
+the current default now triggers a deprecation warning.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="release-9.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="release-7.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="release-9.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="release-7.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

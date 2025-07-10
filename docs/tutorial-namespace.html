@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Namespace - The Nutils Book</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">The Nutils Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/evalf/nutils-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="namespace"><a class="header" href="#namespace">Namespace</a></h1>
+<p>Nutils functions behave entirely like Numpy arrays, and can be manipulated as
+such, using a combination of operators, object methods, and methods found in
+the <code>nutils.function</code> module. Though powerful, the resulting code is often
+lengthy, littered with colons and brackets, and hard to read. <em>Namespaces</em>
+provide an alternative, cleaner syntax for a prominent subset of array
+manipulations.</p>
+<p>A <code>nutils.expression_v2.Namespace</code> is a collection of <code>nutils.function.Array</code>
+functions.  An empty <code>nutils.expression_v2.Namespace</code> is created as follows:</p>
+<pre><code class="language-python">ns = Namespace()
+</code></pre>
+<p>New entries are added to a <code>nutils.expression_v2.Namespace</code> by assigning an
+<code>nutils.function.Array</code> to an attribute.  For example, the geometry
+<code>geom</code> is assigned to <code>ns.x</code> via</p>
+<pre><code class="language-python">ns.x = geom
+</code></pre>
+<p>You can now use <code>ns.x</code> where you would use <code>geom</code>. Usually you will want to add
+the gradient, normal and jacobian of this geometry to the namespace as well.
+This can be done by calling <code>nutils.expression_v2.Namespace.define_for</code> with
+the name of the geometry (as present in the namespace) followed by the names or
+symbols you choose to represent the desired features as optional keyword
+arguments:</p>
+<pre><code class="language-python">ns.define_for('x', gradient='∇', normal='n', jacobians=('dV', 'dS'))
+</code></pre>
+<p>The discrete solution is again added through a simple assignment:</p>
+<pre><code class="language-python">ns.u = topo.field('u', btype='spline', degree=1)
+</code></pre>
+<p>It is also possible to assign numbers and <code>numpy.ndarray</code> objects:</p>
+<pre><code class="language-python">ns.a = 1
+ns.b = 2
+ns.c = numpy.array([1,2])
+ns.A = numpy.array([[1,2],[3,4]])
+</code></pre>
+<h2 id="expressions"><a class="header" href="#expressions">Expressions</a></h2>
+<p>In addition to inserting ready objects, a namespace's real power lies in its
+ability to be assigned string expressions. These expressions may reference any
+<code>nutils.function.Array</code> function present in the
+<code>nutils.expression_v2.Namespace</code>, and must explicitly name all array
+dimensions, with the object of both aiding readibility and facilitating high
+order tensor manipulations. A short explanation of the syntax follows; see
+<code>nutils.expression_v2</code> for the complete documentation.</p>
+<p>A <em>term</em> is written by joining variables with spaces, optionally preceeded by a
+single number, e.g. <code>2 a b</code>.  A <em>fraction</em> is written as two terms joined by
+<code>/</code>, e.g. <code>2 a / 3 b</code>, which is equivalent to <code>(2 a) / (3 b)</code>.  An <em>addition</em>
+or <em>subtraction</em> is written as two terms joined by <code>+</code> or <code>-</code>, respectively,
+e.g. <code>1 + a b - 2 b</code>.  <em>Exponentation</em> is written by two variables or numbers
+joined by <code>^</code>, e.g. <code>a^2</code>.  Several trigonometric functions are available, e.g.
+<code>0.5 sin(a)</code>.</p>
+<p>Assigning an expression to the namespace is then done as follows.</p>
+<pre><code class="language-python">ns.e = '2 a / 3 b'
+ns.e = (2*ns.a) / (3*ns.b) # equivalent w/o expression
+</code></pre>
+<p>The resulting <code>ns.e</code> is an ordinary <code>nutils.function.Array</code>.  Note that the
+variables used in the expression should exist in the namespace, not just as a
+local variable:</p>
+<pre><code class="language-python (skip)">localvar = 1
+ns.f = '2 localvar'
+# Traceback (most recent call last):
+#   ...
+# nutils.expression_v2.ExpressionSyntaxError: No such variable: `localvar`.
+# 2 localvar
+#   ^^^^^^^^
+</code></pre>
+<p>When using arrays in an expression all axes of the arrays should be labelled
+with an index, e.g.  <code>2 c_i</code> and <code>c_i A_jk</code>.  Repeated indices are summed, e.g.
+<code>A_ii</code> is the trace of <code>d</code> and <code>A_ij c_j</code> is the matrix-vector product of <code>d</code>
+and <code>c</code>.  You can also insert a number, e.g. <code>c_0</code> is the first element of <code>c</code>.
+All terms in an expression should have the same set of indices after summation,
+e.g. it is an error to write <code>c_i + 1</code>.</p>
+<p>When assigning an expression with remaining indices to the namespace, the
+indices should be listed explicitly at the left hand side:</p>
+<pre><code class="language-python">ns.f_i = '2 c_i'
+ns.f = 2*ns.c # equivalent w/o expression
+</code></pre>
+<p>The order of the indices matter: the resulting <code>nutils.function.Array</code> will
+have its axes ordered by the listed indices.  The following three statements
+are equivalent:</p>
+<pre><code class="language-python">ns.g_ijk = 'c_i A_jk'
+ns.g_kji = 'c_k A_ji'
+ns.g = ns.c[:,numpy.newaxis,numpy.newaxis]*ns.A[numpy.newaxis,:,:] # equivalent w/o expression
+</code></pre>
+<p>Function <code>∇</code>, introduced to the namespace with
+<code>~nutils.expression_v2.Namespace.define_for</code> using geometry <code>ns.x</code>, returns the
+gradient of a variable with respect <code>ns.x</code>, e.g. the gradient of the basis is
+<code>∇_i(basis_n)</code>.  This works with expressions as well, e.g. <code>∇_i(2 basis_n + basis_n^2)</code> is the gradient of <code>2 basis_n + basis_n^2</code>.</p>
+<h2 id="manual-evaluation"><a class="header" href="#manual-evaluation">Manual evaluation</a></h2>
+<p>Sometimes it is useful to evaluate an expression to an
+<code>nutils.function.Array</code> without inserting the result in the namespace.
+This can be done using the <code>&lt;expression&gt; @ &lt;namespace&gt;</code> notation.  An example
+with a scalar expression:</p>
+<pre><code class="language-python">'2 a / 3 b' @ ns
+# Array&lt;&gt;
+(2*ns.a) / (3*ns.b) # equivalent w/o `... @ ns`
+# Array&lt;&gt;
+</code></pre>
+<p>An example with a vector expression:</p>
+<pre><code class="language-python">'2 c_i' @ ns
+# Array&lt;2&gt;
+2*ns.c # equivalent w/o `... @ ns`
+# Array&lt;2&gt;
+</code></pre>
+<p>If an expression has more than one remaining index, the axes of the evaluated
+array are ordered alphabetically:</p>
+<pre><code class="language-python">'c_i A_jk' @ ns
+# Array&lt;2,2,2&gt;
+ns.c[:,numpy.newaxis,numpy.newaxis]*ns.A[numpy.newaxis,:,:] # equivalent w/o `... @ ns`
+# Array&lt;2,2,2&gt;
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="tutorial-functions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="tutorial-integrals.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="tutorial-functions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="tutorial-integrals.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

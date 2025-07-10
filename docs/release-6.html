@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Nutils 6 Garak-Guksu - The Nutils Book</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">The Nutils Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/evalf/nutils-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="nutils-6-garak-guksu"><a class="header" href="#nutils-6-garak-guksu">Nutils 6 Garak-Guksu</a></h1>
+<p>Nutils 6 was released on April 29th, 2020 and saw three point releases for
+fixes and backports. The most recent and final version in this series is Nutils
+6.3, released on November 18th, 2021.</p>
+<ul>
+<li><a href="https://github.com/evalf/nutils/archive/refs/tags/v6.3.zip">Download</a> (zip)</li>
+<li><a href="https://docs.nutils.org/en/v6.3/">API Reference</a></li>
+</ul>
+<h2 id="whats-new"><a class="header" href="#whats-new">What's New?</a></h2>
+<p>These are the main additions and changes since <a href="release-5.html">Nutils 5
+Farfalle</a>.</p>
+<h3 id="sparse-module"><a class="header" href="#sparse-module">Sparse module</a></h3>
+<p>The new <code>nutils.sparse</code> module introduces a data type and a suite of
+manipulation methods for arbitrary dimensional sparse data. The existing
+integrate and integral methods now create data of this type under the hood, and
+then convert it to a scalar, Numpy array or <code>nutils.matrix.Matrix</code> upon return.
+To prevent this conversion and receive the sparse objects instead use the new
+<code>nutils.sample.Sample.integrate_sparse</code> or
+<code>nutils.sample.eval_integrals_sparse</code>.</p>
+<h3 id="external-dependency-for-parsing-gmsh-files"><a class="header" href="#external-dependency-for-parsing-gmsh-files">External dependency for parsing gmsh files</a></h3>
+<p>The <code>nutils.mesh.gmsh</code> method now depends on the external
+<a href="https://github.com/nschloe/meshio">meshio</a> module to parse .msh files:</p>
+<pre><code class="language-sh">python3 -m pip install --user --upgrade meshio
+</code></pre>
+<h3 id="change-dof-order-in-basisvector"><a class="header" href="#change-dof-order-in-basisvector">Change dof order in basis.vector</a></h3>
+<p>When creating a vector basis using <code>topo.basis(..).vector(nd)</code>, the order of
+the degrees of freedom changed from grouping by vector components to grouping
+by scalar basis functions:</p>
+<pre><code>[b0,  0]         [b0,  0]
+[b1,  0]         [ 0, b0]
+[.., ..] old     [b1,  0]
+[bn,  0] ------&gt; [ 0, b1]
+[ 0, b0]     new [.., ..]
+[.., ..]         [bn,  0]
+[ 0, bn]         [ 0, bn]
+</code></pre>
+<p>This should not affect applications unless the solution vector is manipulated
+directly, such as might happen in unit tests. If required for legacy purposes
+the old vector can be retrieved using <code>old = new.reshape(-1,nd).T.ravel()</code>.
+Note that the change does not extend to <code>nutils.function.vectorize</code>.</p>
+<h3 id="change-from-stickybar-to-bottombar"><a class="header" href="#change-from-stickybar-to-bottombar">Change from stickybar to bottombar</a></h3>
+<p>For <code>nutils.cli.run</code> to draw a status bar, it now requires the external
+<a href="https://github.com/evalf/bottombar">bottombar</a> module to be installed:</p>
+<pre><code class="language-sh">python3 -m pip install --user bottombar
+</code></pre>
+<p>This replaces stickybar, which is no longer used. In addition to the log uri
+and runtime the status bar will now show the current memory usage, if that
+information is available. On Windows this requires <code>psutil</code> to be installed; on
+Linux and OSX it should work by default.</p>
+<h3 id="support-for-gmsh-msh4-file-format"><a class="header" href="#support-for-gmsh-msh4-file-format">Support for gmsh 'msh4' file format</a></h3>
+<p>The <code>nutils.mesh.gmsh</code> method now supports input in the 'msh4' file format, in
+addition to the 'msh2' format which remains supported for backward
+compatibility. Internally, <code>nutils.mesh.parsegmsh</code> now takes file contents
+instead of a file name.</p>
+<h3 id="new-command-line-option-gracefulexit"><a class="header" href="#new-command-line-option-gracefulexit">New command line option: gracefulexit</a></h3>
+<p>The new boolean command line option <code>gracefulexit</code> determines what happens when
+an exception reaches <code>nutils.cli.run</code>. If true (default) then the exception is
+handled as before and a system exit is initiated with an exit code of 2. If
+false then the exception is reraised as-is. This is useful in particular when
+combined with an external debugging tool.</p>
+<h3 id="log-tracebacks-at-debug-level"><a class="header" href="#log-tracebacks-at-debug-level">Log tracebacks at debug level</a></h3>
+<p>The way exceptions are handled by <code>nutils.cli.run</code> is changed from logging the
+entire exception and traceback as a single error message, to logging the
+exceptions as errors and tracebacks as debug messages. Additionally, the order
+of exceptions and traceback is fully reversed, such that the most relevant
+message is the first thing shown and context follows.</p>
+<h3 id="solve-leniently-to-relative-tolerance-in-newton-systems"><a class="header" href="#solve-leniently-to-relative-tolerance-in-newton-systems">Solve leniently to relative tolerance in Newton systems</a></h3>
+<p>The <code>nutils.solver.newton</code> method now sets the relative tolerance of the linear
+system to <code>1e-3</code> unless otherwise specified via <code>linrtol</code>. This is mainly
+useful for iterative solvers which can save computational effort by having
+their stopping criterion follow the current Newton residual, but it may also
+help with direct solvers to warn of ill conditioning issues. Iterations
+furthermore use <code>nutils.matrix.Matrix.solve_leniently</code>, thus proceeding after
+warning that tolerances have not been met in the hope that Newton convergence
+might be attained regardless.</p>
+<h3 id="linear-solver-arguments"><a class="header" href="#linear-solver-arguments">Linear solver arguments</a></h3>
+<p>The methods <code>nutils.solver.newton</code>, <code>nutils.solver.minimize</code>,
+<code>nutils.solver.pseudotime</code>, <code>nutils.solver.solve_linear</code> and
+<code>nutils.solver.optimize</code> now receive linear solver arguments as keyword
+arguments rather than via the <code>solveargs</code> dictionary, which is deprecated. To
+avoid name clashes with the remaining arguments, argument names must be
+prefixed by <code>lin</code>:</p>
+<pre><code class="language-python">solver.solve_linear('lhs', res,
+  solveargs=dict(solver='gmres')) # deprecated syntax
+
+solver.solve_linear('lhs', res,
+  linsolver='gmres') # new syntax
+</code></pre>
+<h3 id="iterative-refinement"><a class="header" href="#iterative-refinement">Iterative refinement</a></h3>
+<p>Direct solvers enter an iterative refinement loop in case the first pass did
+not meet the configured tolerance. In machine precision mode (atol=0, rtol=0)
+this refinement continues until the residual stagnates.</p>
+<h3 id="matrix-solver-tolerances"><a class="header" href="#matrix-solver-tolerances">Matrix solver tolerances</a></h3>
+<p>The absolute and/or relative tolerance for solutions of a linear system can now
+be specified in <code>nutils.matrix.Matrix.solve</code> via the <code>atol</code> resp. <code>rtol</code>
+arguments, regardless of backend and solver. If the backend returns a solution
+that violates both tolerances then an exception is raised of type
+<code>nutils.matrix.ToleranceNotReached</code>, from which the solution can still be
+obtained via the <code>.best</code> attribute. Alternatively the new method
+<code>nutils.matrix.Matrix.solve_leniently</code> always returns a solution while logging
+a warning if tolerances are not met. In case both tolerances are left at their
+default value or zero then solvers are instructed to produce a solution to
+machine precision, with subsequent checks disabled.</p>
+<h3 id="use-stringly-for-command-line-parsing"><a class="header" href="#use-stringly-for-command-line-parsing">Use stringly for command line parsing</a></h3>
+<p>Nutils now depends on stringly (version 1.0b1) for parsing of command line
+arguments. The new implementation of <code>nutils.cli.run</code> is fully backwards
+compatible, but the preferred method of annotating function arguments is now as
+demonstrated in all of the examples.</p>
+<p>For new Nutils installations Stringly will be installed automatically as a
+dependency. For existing setups it can be installed manually as follows:</p>
+<pre><code class="language-sh">python3 -m pip install --user --upgrade stringly
+</code></pre>
+<h3 id="fixed-and-fallback-lengths-in-namespace-expressions"><a class="header" href="#fixed-and-fallback-lengths-in-namespace-expressions">Fixed and fallback lengths in (namespace) expressions</a></h3>
+<p>The <code>nutils.function.Namespace</code> has two new arguments: <code>length_&lt;indices&gt;</code> and
+<code>fallback_length</code>. The former can be used to assign fixed lengths to specific
+indices in expressions, say index <code>i</code> should have length 2, which is used for
+verification and resolving undefined lengths. The latter is used to resolve
+remaining undefined lengths:</p>
+<pre><code class="language-python">ns = nutils.function.Namespace(length_i=2, fallback_length=3)
+ns.eval_ij('δ_ij') # using length_i
+# Array&lt;2,2&gt;
+ns.eval_jk('δ_jk') # using fallback_length
+# Array&lt;3,3&gt;
+</code></pre>
+<h3 id="treelog-update"><a class="header" href="#treelog-update">Treelog update</a></h3>
+<p>Nutils now depends on treelog version 1.0b5, which brings improved iterators
+along with other enhancements. For transitional convenience the backwards
+incompatible changes have been backported in the <code>nutils.log</code> wrapper, which
+now emits a warning in case the deprecated methods are used. This wrapper is
+scheduled for deletion prior to the release of version 6.0. To update treelog
+to the most recent version use:</p>
+<pre><code class="language-sh">python -m pip install -U treelog
+</code></pre>
+<h3 id="unit-type"><a class="header" href="#unit-type">Unit type</a></h3>
+<p>The new <code>nutils.types.unit</code> allows for the creation of a unit system for easy
+specification of physical quantities. Used in conjunction with <code>nutils.cli.run</code>
+this facilitates specifying units from the command line, as well as providing a
+warning mechanism against incompatible units:</p>
+<pre><code class="language-python">U = types.unit.create(m=1, s=1, g=1e-3, N='kg*m/s2', Pa='N/m2')
+def main(length=U('2m'), F=U('5kN')):
+  topo, geom = mesh.rectilinear([numpy.linspace(0,length,10)])
+</code></pre>
+<pre><code class="language-sh">python myscript.py length=25cm # OK
+python myscript.py F=10Pa # error!
+</code></pre>
+<h3 id="sample-basis"><a class="header" href="#sample-basis">Sample basis</a></h3>
+<p>Samples now provide a <code>nutils.sample.Sample.basis</code>: an array that for any point
+in the sample evaluates to the unit vector corresponding to its index. This new
+underpinning of <code>nutils.sample.Sample.asfunction</code> opens the way for sampled
+arguments, as demonstrated in the last example below:</p>
+<pre><code class="language-python">H1 = mysample.asfunction(mydata) # mysample.eval(H1) == mydata
+H2 = mysample.basis().dot(mydata) # mysample.eval(H2) == mydata
+ns.Hbasis = mysample.basis()
+H3 = 'Hbasis_n ?d_n' @ ns # mysample.eval(H3, d=mydata) == mydata
+</code></pre>
+<h3 id="higher-order-gmsh-geometries"><a class="header" href="#higher-order-gmsh-geometries">Higher order gmsh geometries</a></h3>
+<p>Gmsh element support has been extended to include cubic and quartic meshes in
+2D and quadratic meshes in 3D, and parsing the msh file is now a cacheable
+operation. Additionally, tetrahedra now define bezier points at any order.</p>
+<h3 id="repository-location"><a class="header" href="#repository-location">Repository location</a></h3>
+<p>The Nutils repository has moved to <a href="https://github.com/evalf/nutils.git">https://github.com/evalf/nutils.git</a>. For the
+time being the old address is maintained by Github as an alias, but in the long
+term you are advised to update your remote as follows:</p>
+<pre><code class="language-sh">git remote set-url origin https://github.com/evalf/nutils.git
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="release-7.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="release-5.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="release-7.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="release-5.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
