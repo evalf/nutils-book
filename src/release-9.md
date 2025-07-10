@@ -1,9 +1,11 @@
 # Nutils 9 Jook-Sing
 
-Nutils 9 was released on April 9, 2025.
+Nutils 9 was released on April 9, 2025 and saw one point release for fixes and
+backports. The most recent version in this series is Nutils 9.1, released on
+July 7th, 2025.
 
-- [Download](https://github.com/evalf/nutils/archive/refs/tags/v9.0.zip) (zip)
-- [API Reference](https://docs.nutils.org/en/v9.0/)
+- [Download](https://github.com/evalf/nutils/archive/refs/tags/v9.1.zip) (zip)
+- [API Reference](https://docs.nutils.org/en/v9.1/)
 
 
 ## What's new?
